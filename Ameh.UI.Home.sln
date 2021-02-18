@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.808.8
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ameh.UI.Home", "src\Ameh.UI.Home\Ameh.UI.Home.csproj", "{0BF7F241-9811-47AF-99E9-8BB2FDBA8AED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A6CCA900-FA48-415F-A182-FF9135B189B5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{C361A52B-FBEE-4436-B702-B989524E5D61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ameh.UI.Home.Tests", "tests\Ameh.UI.Home.Tests\Ameh.UI.Home.Tests.csproj", "{56514C77-1096-4F49-B5F3-B8857358217F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0BF7F241-9811-47AF-99E9-8BB2FDBA8AED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BF7F241-9811-47AF-99E9-8BB2FDBA8AED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BF7F241-9811-47AF-99E9-8BB2FDBA8AED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BF7F241-9811-47AF-99E9-8BB2FDBA8AED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56514C77-1096-4F49-B5F3-B8857358217F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56514C77-1096-4F49-B5F3-B8857358217F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56514C77-1096-4F49-B5F3-B8857358217F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56514C77-1096-4F49-B5F3-B8857358217F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EA23EE23-8841-4F0F-AAF8-630DBA7EFE16}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0BF7F241-9811-47AF-99E9-8BB2FDBA8AED} = {A6CCA900-FA48-415F-A182-FF9135B189B5}
+		{56514C77-1096-4F49-B5F3-B8857358217F} = {C361A52B-FBEE-4436-B702-B989524E5D61}
+	EndGlobalSection
+EndGlobal
