@@ -10,4 +10,7 @@
     <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="npx postcss $(ProjectDir)obj/$(ConfigurationName)/net5.0/scopedcss/bundle/$(ProjectName).styles.css -r" />
+  </Target>
 </Project>

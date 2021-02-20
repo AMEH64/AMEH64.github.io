@@ -68,3 +68,8 @@
         padding-right: 1.5rem !important;
     }
 }
+
+
+.tailwind-test-class {
+    @apply bg-blue-500 hover:bg-blue-700 text-white;
+}

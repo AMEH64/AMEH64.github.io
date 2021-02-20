@@ -1,0 +1,28 @@
+{
+  "name": "ameh64.github.io",
+  "version": "1.0.0",
+  "description": "Blazor Project w/ Tailwind CSS",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AMEH64/AMEH64.github.io.git"
+  },
+  "author": "Allen Hansen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AMEH64/AMEH64.github.io/issues"
+  },
+  "homepage": "https://github.com/AMEH64/AMEH64.github.io#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.2.4",
+    "postcss": "^8.2.6",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.0.3"
+  }
+}
