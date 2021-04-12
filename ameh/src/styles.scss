@@ -3,4 +3,55 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
 
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// **Be sure that you only ever include this mixin once!**
+@include mat-core();
+
+// Define the default theme (same as the example above).
+$ameh-light-primary: mat-palette($mat-indigo);//, $default: 200);
+$ameh-light-accent: mat-palette($mat-teal, $default: 200);
+$ameh-light-theme: mat-light-theme((
+  color: (
+    primary: $ameh-light-primary,
+    accent: $ameh-light-accent,
+  )
+));
+
+// Include the default theme styles (color and default density)
+@include angular-material-theme($ameh-light-theme);
+
+// Define an alternate dark theme.
+$ameh-dark-primary: mat-palette($mat-indigo, $default: 200);
+$ameh-dark-accent: mat-palette($mat-teal, $default: 200);
+$ameh-dark-theme:   mat-dark-theme((
+  color: (
+    primary: $ameh-dark-primary,
+    accent: $ameh-dark-accent
+  )
+));
+
+// Include the dark color styles inside of a block with a CSS class. You can make this
+// CSS class whatever you want. In this example, any component inside of an element with
+// `.unicorn-dark-theme` will be affected by this alternate dark theme instead of the default theme.
+.dark-theme {
+  @include angular-material-color($ameh-dark-theme);
+}
+
+
+
+// mat-icons
+.icon-1\/2x {
+  transform: scale(0.5);
+}
+
+.icon-2x {
+  transform: scale(2);
+}
+
+.icon-3x {
+  transform: scale(3);
+}
