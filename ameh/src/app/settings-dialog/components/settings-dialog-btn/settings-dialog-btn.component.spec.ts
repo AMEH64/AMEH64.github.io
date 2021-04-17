@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DarkThemeToggleComponent } from './dark-theme-toggle.component';
+import { SettingsDialogBtnComponent } from './settings-dialog-btn.component';
 
-describe('DarkThemeToggleComponent', () => {
-  let component: DarkThemeToggleComponent;
-  let fixture: ComponentFixture<DarkThemeToggleComponent>;
+describe('SettingsDialogBtnComponent', () => {
+  let component: SettingsDialogBtnComponent;
+  let fixture: ComponentFixture<SettingsDialogBtnComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DarkThemeToggleComponent ]
+      declarations: [ SettingsDialogBtnComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DarkThemeToggleComponent);
+    fixture = TestBed.createComponent(SettingsDialogBtnComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

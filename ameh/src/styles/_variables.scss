@@ -1,0 +1,11 @@
+@import '~@angular/material/theming';
+
+$ameh-light-primary-palette: mat-palette($mat-indigo);//, $default: 200);
+$ameh-light-accent-palette: mat-palette($mat-teal, $default: 200);
+
+$ameh-dark-primary-palette: mat-palette($mat-indigo, $default: 200);
+$ameh-dark-accent-palette: mat-palette($mat-teal, $default: 200);
+
+$ameh-light-primary: mat-color($ameh-light-primary-palette);
+$ameh-light-primary: mat-color($ameh-light-primary-palette);
+$warn: mat-color($ameh-light-primary-palette);

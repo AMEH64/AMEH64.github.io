@@ -1,5 +1,7 @@
-import { LocalStorageService } from './local-storage.service';
+import { ThemeService } from './theme.service';
 
-export const services: any[] = [LocalStorageService];
+export const services: any[] = [
+  ThemeService
+];
 
-export * from './local-storage.service';
+export * from './theme.service';

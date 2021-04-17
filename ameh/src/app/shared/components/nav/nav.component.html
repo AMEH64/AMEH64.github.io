@@ -20,7 +20,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <ameh-dark-theme-toggle></ameh-dark-theme-toggle>
+      <ng-content select="[slot='ameh-nav-content']"></ng-content>
     </mat-toolbar>
     <ng-content select="[slot='ameh-main-content']"></ng-content>
   </mat-sidenav-content>

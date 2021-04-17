@@ -45,13 +45,11 @@ import { MatTreeModule } from '@angular/material/tree';
 // Custom Shared Components
 import { NavComponent } from './components/nav/nav.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { DarkThemeToggleComponent } from './components/dark-theme-toggle/dark-theme-toggle.component';
 
 @NgModule({
   declarations: [
     NavComponent,
-    PageNotFoundComponent,
-    DarkThemeToggleComponent
+    PageNotFoundComponent
   ],
   imports: [
     CommonModule,
@@ -139,8 +137,7 @@ import { DarkThemeToggleComponent } from './components/dark-theme-toggle/dark-th
     MatTooltipModule,
     MatTreeModule,
     NavComponent,
-    PageNotFoundComponent,
-    DarkThemeToggleComponent
+    PageNotFoundComponent
   ]
 })
 export class SharedModule { }

@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Settings</h1>
+<mat-dialog-content [formGroup]="form">
+  <!-- <mat-checkbox [formControlName]="useSystemDefault">Use system default</mat-checkbox> -->
+  <p>
+    Theme:
+    <mat-button-toggle-group formControlName="themePreference" aria-label="Theme Selector">
+      <mat-button-toggle value="system">
+        <mat-icon fontSet="fas" fontIcon="fa-mobile-alt"></mat-icon>&nbsp;System default
+      </mat-button-toggle>
+      <mat-button-toggle value="light">
+        <mat-icon fontSet="fas" fontIcon="fa-sun"></mat-icon>&nbsp;Light
+      </mat-button-toggle>
+      <mat-button-toggle value="dark">
+        <mat-icon fontSet="fas" fontIcon="fa-moon"></mat-icon>&nbsp;Dark
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </p>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<mat-dialog-actions>
+  <button class="mat-raised-button mat-accent"(click)="cancel()">Cancel</button>
+  <button class="mat-raised-button mat-primary"(click)="save()">
+    <!-- <mat-icon fontSet="fas" fontIcon="fa-save"></mat-icon>&nbsp; -->
+    Save
+  </button>
+</mat-dialog-actions>

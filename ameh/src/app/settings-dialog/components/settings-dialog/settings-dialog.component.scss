@@ -1,0 +1,20 @@
+.mat-button-toggle-group {
+  margin-left: 12px;
+}
+
+.mat-divider {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.mat-dialog-actions {
+  display: flow-root;
+}
+
+.mat-dialog-actions > button.mat-accent {
+  float: left;
+}
+
+.mat-dialog-actions > button.mat-primary {
+  float: right;
+}
