@@ -1,0 +1,75 @@
+[
+  {
+    "organization": {
+      "name": "Mortgage Cadence, an Accenture Company",
+      "logo": "mc-logo.jpg"
+    },
+    "positions": [
+      {
+        "title": "Software Developer Specialist",
+        "start": "",
+        "end": null,
+        "summary": "TODO.",
+        "skills": [
+          "TODO"
+        ]
+      }
+    ]
+  },
+  {
+    "organization": {
+      "name": "Willis Towers Watson (WTW)",
+      "logo": "wtw-logo.jpg"
+    },
+    "positions": [
+      {
+        "title": "Software Developement Technical Lead",
+        "start": "06/05/2017",
+        "end": "02/28/2020",
+        "summary": "As a Software Developer Technical Lead, in Benefits Outsourcing, Allen collaborated with a diverse cross-functional and international team, both in-person and virtually, to develop and maintain a benefit administration system.",
+        "skills": [
+          "HTML",
+          ".NET",
+          "API",
+          "MVC",
+          "WebForms",
+          "Angular",
+          "CSS",
+          "Sass",
+          "HTML",
+          ".NET",
+          "API",
+          "MVC",
+          "WebForms",
+          "Angular",
+          "CSS",
+          "Sass",
+          "HTML",
+          ".NET",
+          "API",
+          "MVC",
+          "WebForms",
+          "Angular",
+          "CSS",
+          "Sass"
+        ]
+      },
+      {
+        "title": "Software Developer",
+        "start": "06/05/2017",
+        "end": "02/28/2020",
+        "summary": "As a Software Developer, in Benefits Delivery and Administration (BDA), Allen collaborates with a diverse cross-functional and international team, both in-person and virtually, to develop and maintain a benefit administration system - BenefitConnect.",
+        "skills": [
+          "HTML",
+          ".NET",
+          "API",
+          "MVC",
+          "WebForms",
+          "Angular",
+          "CSS",
+          "Sass"
+        ]
+      }
+    ]
+  }
+]

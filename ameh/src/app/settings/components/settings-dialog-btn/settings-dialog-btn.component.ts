@@ -38,12 +38,12 @@ export class SettingsDialogBtnComponent implements OnInit, OnDestroy {
         dialogRef.afterClosed().subscribe(data => {
           if (!!data && !!data.themePreference) {
             this.sub = this.themeService.saveThemePreference(data.themePreference).subscribe({
-              error: error => console.error(error)
+              error: err => console.error(err)
             });
           }
         });
       },
-      error: error => console.error(error)
+      error: err => console.error(err)
     });
   }
 

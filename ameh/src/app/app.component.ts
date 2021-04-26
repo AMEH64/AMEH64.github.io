@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+
 import { ThemeService } from '@core/services';
 
 @Component({
@@ -7,12 +9,15 @@ import { ThemeService } from '@core/services';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'ameh';
+  public title = 'ameh';
 
-  constructor(private themeService: ThemeService) { }
+  public theme$: Observable<string>;
 
-  ngOnInit(): void {
-    this.themeService.applyTheme();
+  constructor(private themeService: ThemeService) {
+    this.themeService.getTheme();
+    this.theme$ = this.themeService.theme$;
   }
 
+  ngOnInit(): void {
+  }
 }

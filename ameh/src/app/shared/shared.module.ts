@@ -7,6 +7,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 
 // Angular Material
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
@@ -53,11 +54,12 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
   ],
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
+    // BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     LayoutModule,
     FlexLayoutModule,
+    DragDropModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,
@@ -96,11 +98,12 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     RouterModule
   ],
   exports: [
-    BrowserAnimationsModule,
+    // BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     LayoutModule,
     FlexLayoutModule,
+    DragDropModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,

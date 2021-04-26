@@ -1,0 +1,11 @@
+:host {
+  section {
+    height: calc(100vh - 64px);
+
+    div {
+      div:last-of-type {
+        padding: 3rem;
+      }
+    }
+  }
+}

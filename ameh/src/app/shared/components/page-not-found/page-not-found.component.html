@@ -1,4 +1,4 @@
-<section>
+<!-- <section>
   <div fxLayout="column" fxFlexFill>
     <div fxFlex="1 1 0%" fxFlexAlign="center">
       <h2 class="mat-display-3">Error: 404</h2>
@@ -6,23 +6,40 @@
         The page you were looking for does not exist.
         Please check the url entered and try again, or return <a routerLink="/home">home</a>.
       </p>
-      <!-- <p class="mat-subheading-2" fxHide.sm="true" fxHide.xs="true">
-        Reasons why this may have happened:
-        <mat-list>
-          <mat-list-item>
-            <mat-icon class="icon-1/2x">circle</mat-icon>&nbsp;A typo exists in the url entered
-          </mat-list-item>
-          <mat-list-item>
-            <mat-icon class="icon-1/2x">circle</mat-icon>&nbsp;The page requested was removed or deleted
-          </mat-list-item>
-          <mat-list-item>
-            <mat-icon class="icon-1/2x">circle</mat-icon>&nbsp;The page requested never existed
-          </mat-list-item>
-        </mat-list>
-      </p> -->
     </div>
     <div #imgContainer fxFlex="1 1 0%" fxFlexAlign="end">
       <img src="assets/images/ameh-investigating-bg-transparent-right.png">
     </div>
   </div>
+</section> -->
+
+
+<section>
+  <div fxLayout.gt-md="row" fxLayout="column" fxFlexFill>
+    <div fxFlex="1 1 0%" fxFlexAlign="center">
+      <h2 class="mat-display-2">Error: 404</h2>
+      <p class="mat-headline">
+        The page you were looking for does not exist.
+        Please check the url entered and try again, or return <a mat-stroked-button routerLink="/home">home</a>.
+      </p>
+      <p class="mat-subheading-2" fxHide.sm="true" fxHide.xs="true">
+        Reasons why this may have happened:
+        <mat-list>
+          <mat-list-item>
+            <mat-icon class="icon-1/4x">circle</mat-icon>&nbsp;A typo exists in the url entered
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon class="icon-1/4x">circle</mat-icon>&nbsp;The page requested was removed or deleted
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon class="icon-1/4x">circle</mat-icon>&nbsp;The page requested never existed
+          </mat-list-item>
+        </mat-list>
+      </p>
+    </div>
+    <div fxFlex="0 1 0%" fxFlexAlign="end">
+      <img src="assets/images/ameh-investigating-bg-transparent-right.png">
+    </div>
+  </div>
 </section>
+

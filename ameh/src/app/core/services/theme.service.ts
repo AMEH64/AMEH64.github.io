@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { map } from 'rxjs/operators';
+import { ThemePreference } from '@core/core-module';
 
 @Injectable({
   providedIn: 'root'
@@ -13,29 +14,36 @@ export class ThemeService {
     dark: 'dark'
   };
 
+  private _theme: BehaviorSubject<string> = new BehaviorSubject<string>('');
+
+  public theme$: Observable<string> = this._theme.asObservable();
+
   constructor(private storage: StorageMap) { }
 
-  private get themeDefault(): string {
-    return this._themes.dark;
+  private get themeDefault(): ThemePreference {
+    return 'dark';
   }
 
   private isSystemPreference(theme: string): boolean {
     return window.matchMedia(`(prefers-color-scheme: ${theme})`).matches;
   }
 
-  getThemePreference(): Observable<string> {
+  public getThemePreference(): Observable<ThemePreference> {
     return this.storage.get('themePreference', { type: 'string' }).pipe(
-      map(themePreference => themePreference ?? this.themeDefault)
+      map(themePreference => (themePreference as ThemePreference) ?? this.themeDefault)
     );
   }
 
-  saveThemePreference(value: string): Observable<void> {
+  public saveThemePreference(value: ThemePreference): Observable<void> {
     return this.storage.set('themePreference', value, { type: 'string'}).pipe(
-      map(() => this.applyTheme(value))
+      map(() => {
+        this.getTheme();
+
+      })
     );
   }
 
-  getTheme(themePreference: string): string {
+  private getThemeFromThemePreference(themePreference: ThemePreference): string {
     if (themePreference === this._themes.light || (themePreference === this._themes.system && this.isSystemPreference(this._themes.light))) {
       return this._themes.light;
     } else if (themePreference === this._themes.dark || (themePreference === this._themes.system && this.isSystemPreference(this._themes.dark))) {
@@ -45,8 +53,22 @@ export class ThemeService {
     }
   }
 
-  applyTheme(themePreference?: string): void {
-    const theme = this.getTheme(themePreference ?? this.themeDefault);
-    document.body.classList.toggle(`${this._themes.dark}-theme`, theme === this._themes.dark);
+  public getTheme(): void {
+    this.storage.get('themePreference', { type: 'string' }).subscribe(response => {
+      const themePreference: ThemePreference = response as ThemePreference;
+      const theme = this.getThemeFromThemePreference(themePreference);
+      this._theme.next(theme);
+    }, err => console.error(err));
   }
+
+  // initializeTheme(): Observable<void> {
+  //   return this.getThemePreference().pipe(
+  //     map(themePreference => this.applyTheme(themePreference))
+  //   );
+  // }
+
+  // applyTheme(themePreference: ThemePreference): void {
+  //   const theme = this.getTheme(themePreference);
+  //   document.body.classList.toggle(`${this._themes.dark}-theme`, theme === this._themes.dark);
+  // }
 }

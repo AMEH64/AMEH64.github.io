@@ -1,0 +1,5 @@
+<mat-chip-list cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
+  <mat-chip cdkDrag *ngFor="let skill of skills" selected color="accent">
+    {{skill}}
+  </mat-chip>
+</mat-chip-list>

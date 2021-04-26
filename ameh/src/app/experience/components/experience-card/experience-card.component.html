@@ -1,0 +1,35 @@
+<mat-card>
+  <mat-card-header>
+    <img mat-card-avatar src="assets/images/{{experience.organization.logo}}"/>
+    <mat-card-title>{{experience.organization.name}}</mat-card-title>
+    <!-- <mat-card-subtitle>{{ experience.positions. | date: 'MMMM, y' }} - {{ experience.end | date: 'MMMM, y'}}</mat-card-subtitle> -->
+  </mat-card-header>
+  <mat-card-content>
+    <mat-vertical-stepper #stepper>
+      <mat-step *ngFor="let position of experience.positions" [label]="position.title">
+        <p class="mat-body-1">{{position.summary}}</p>
+        <mat-list>
+          <mat-list-item class="mat-body-1">
+            <mat-icon class="icon-1/4x">circle</mat-icon>&nbsp;Blah difjowej sdfjio dsfwiooj sdfd fewf
+          </mat-list-item>
+        </mat-list>
+        <!-- <mat-divider [inset]="true"></mat-divider> -->
+        <ameh-skills-chip-list [skills]="position.skills"></ameh-skills-chip-list>
+      </mat-step>
+      <ng-template matStepperIcon="edit">
+        <mat-icon>work</mat-icon>
+      </ng-template>
+      <ng-template matStepperIcon="done">
+        <mat-icon>work</mat-icon>
+      </ng-template>
+      <ng-template matStepperIcon="number" let-index="index">
+        <!-- {{index + 1}} -->
+        <mat-icon>work</mat-icon>
+      </ng-template>
+    </mat-vertical-stepper>
+  </mat-card-content>
+  <!-- <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions> -->
+</mat-card>

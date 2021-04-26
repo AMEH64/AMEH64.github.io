@@ -2,6 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
+import { ThemePreference } from '@core/core-module';
+
 @Component({
   selector: 'ameh-settings-dialog',
   templateUrl: './settings-dialog.component.html',
@@ -12,7 +14,7 @@ export class SettingsDialogComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private dialogRef: MatDialogRef<SettingsDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: { themePreference: string }) {
+    @Inject(MAT_DIALOG_DATA) private data: { themePreference: ThemePreference }) {
       console.log(data.themePreference);
       this.form = this.fb.group({
         themePreference: [this.data.themePreference, Validators.required]

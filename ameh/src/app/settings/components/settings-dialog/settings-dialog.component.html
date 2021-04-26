@@ -19,7 +19,8 @@
 <mat-divider></mat-divider>
 <mat-dialog-actions>
   <button class="mat-raised-button mat-accent"(click)="cancel()">Cancel</button>
-  <button class="mat-raised-button mat-primary"(click)="save()">
+  <button class="mat-raised-button mat-primary"(click)="save()"
+    [disabled]="form.invalid">
     <!-- <mat-icon fontSet="fas" fontIcon="fa-save"></mat-icon>&nbsp; -->
     Save
   </button>
