@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { OverlayContainer } from '@angular/cdk/overlay';
 import { StorageMap } from '@ngx-pwa/local-storage';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ThemePreference } from '@core/core-module';
+
+import { ThemePreference } from '@core/declarations';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +20,7 @@ export class ThemeService {
 
   public theme$: Observable<string> = this._theme.asObservable();
 
-  constructor(private storage: StorageMap) { }
+  constructor(private storage: StorageMap, private overlayContainer: OverlayContainer) { }
 
   private get themeDefault(): ThemePreference {
     return 'dark';
@@ -38,7 +40,6 @@ export class ThemeService {
     return this.storage.set('themePreference', value, { type: 'string'}).pipe(
       map(() => {
         this.getTheme();
-
       })
     );
   }
@@ -58,17 +59,9 @@ export class ThemeService {
       const themePreference: ThemePreference = response as ThemePreference;
       const theme = this.getThemeFromThemePreference(themePreference);
       this._theme.next(theme);
+      this.overlayContainer.getContainerElement()
+        .classList
+        .toggle(`${this._themes.dark}-theme`, theme === this._themes.dark);
     }, err => console.error(err));
   }
-
-  // initializeTheme(): Observable<void> {
-  //   return this.getThemePreference().pipe(
-  //     map(themePreference => this.applyTheme(themePreference))
-  //   );
-  // }
-
-  // applyTheme(themePreference: ThemePreference): void {
-  //   const theme = this.getTheme(themePreference);
-  //   document.body.classList.toggle(`${this._themes.dark}-theme`, theme === this._themes.dark);
-  // }
 }

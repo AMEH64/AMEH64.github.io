@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { RouterModule } from '@angular/router';
 
 // Angular Material
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -92,7 +93,8 @@ import { EncodeURIComponentPipe } from './pipes/encode-uri-component.pipe';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatTreeModule
+    MatTreeModule,
+    RouterModule
   ],
   exports: [
     CommonModule,

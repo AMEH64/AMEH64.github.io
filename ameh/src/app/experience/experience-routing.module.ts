@@ -12,6 +12,8 @@ const experienceRoutes: Routes = [
   imports: [
     RouterModule.forChild(experienceRoutes)
   ],
-  exports: [RouterModule]
+  exports: [
+    RouterModule
+  ]
 })
 export class ExperienceRoutingModule { }
