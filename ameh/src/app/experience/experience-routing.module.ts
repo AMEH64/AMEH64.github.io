@@ -3,14 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ExperienceComponent } from './experience.component';
 
-const routes: Routes = [
+const experienceRoutes: Routes = [
   { path: '', component: ExperienceComponent }
 ];
 
 @NgModule({
   declarations: [],
   imports: [
-    RouterModule.forChild(routes)
+    RouterModule.forChild(experienceRoutes)
   ],
   exports: [RouterModule]
 })

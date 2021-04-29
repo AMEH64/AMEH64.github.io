@@ -17,11 +17,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .bg-gradient {
-  background-image: linear-gradient(to right, mat-color($ameh-light-accent), mat-color($ameh-light-primary));
+  background-image: linear-gradient(to right, mat-color($ameh-light-accent), mat-color($ameh-light-primary) 45%);
 }
 
 .dark-theme {
   .bg-gradient {
-    background-image: linear-gradient(to right, mat-color($ameh-dark-accent, darker), mat-color($ameh-dark-primary, darker));
+    background-image: linear-gradient(to right, mat-color($ameh-dark-accent, darker), mat-color($ameh-dark-primary, darker) 45%);
   }
 }

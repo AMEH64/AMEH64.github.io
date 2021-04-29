@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { RouterModule } from '@angular/router';
 
 // Angular Material
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -43,18 +41,18 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 
-// Custom Shared Components
 import { NavComponent } from './components/nav/nav.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { DecodeURIComponentPipe } from './pipes/decode-uri-component.pipe';
+import { EncodeURIComponentPipe } from './pipes/encode-uri-component.pipe';
 
 @NgModule({
   declarations: [
     NavComponent,
-    PageNotFoundComponent
+    DecodeURIComponentPipe,
+    EncodeURIComponentPipe
   ],
   imports: [
     CommonModule,
-    // BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     LayoutModule,
@@ -94,11 +92,10 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatTreeModule,
-    RouterModule
+    MatTreeModule
   ],
   exports: [
-    // BrowserAnimationsModule,
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     LayoutModule,
@@ -140,7 +137,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     MatTooltipModule,
     MatTreeModule,
     NavComponent,
-    PageNotFoundComponent
+    DecodeURIComponentPipe,
+    EncodeURIComponentPipe
   ]
 })
 export class SharedModule { }

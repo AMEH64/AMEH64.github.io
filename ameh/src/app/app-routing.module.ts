@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { PageNotFoundComponent } from '@shared/components/page-not-found/page-not-found.component';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+
 import { HomeComponent } from './home/home.component';
 
-const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'home' },
+const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'experience', loadChildren: () => import('./experience/experience.module').then(m => m.ExperienceModule) },
-  { path: '**', component: PageNotFoundComponent },
-  { path: '**', pathMatch: 'full', redirectTo: '404' },  // Wildcard route for a 404 page
+  { path: 'contact', loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule) },
+  { path: '', pathMatch: 'full', redirectTo: '/home' },
+  { path: '**', loadChildren: () => import('./page-not-found/page-not-found.module').then(m => m.PageNotFoundModule) },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(appRoutes, { enableTracing: true, preloadingStrategy: PreloadAllModules })
   ],
   exports: [RouterModule]
 })

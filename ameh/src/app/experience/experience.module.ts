@@ -1,7 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-
 
 import { ExperienceComponent } from './experience.component';
 import { ExperienceCardComponent } from './components/experience-card/experience-card.component';
@@ -17,7 +14,6 @@ import { SkillsChipListComponent } from './components/skills-chip-list/skills-ch
     SkillsChipListComponent
   ],
   imports: [
-    CommonModule,
     SharedModule,
     ExperienceRoutingModule
   ],
