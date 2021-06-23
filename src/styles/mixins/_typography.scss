@@ -1,0 +1,19 @@
+@mixin display-1-responsive {
+  @apply font-light leading-5 pb-4 text-5xl md:text-6xl lg:text-7xl xl:text-8xl;
+}
+
+@mixin display-2-responsive {
+  @apply font-light leading-5 pb-4 text-4xl md:text-5xl lg:text-6xl xl:text-7xl;
+}
+
+@mixin display-3-responsive {
+  @apply font-light leading-5 pb-4 text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
+}
+
+@mixin display-4-responsive {
+  @apply font-light leading-5 pb-4 text-2xl md:text-3xl lg:text-4xl xl:text-5xl;
+}
+
+@mixin display-5-responsive {
+  @apply font-light leading-5 pb-4 text-xl md:text-2xl lg:text-3xl xl:text-4xl;
+}

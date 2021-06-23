@@ -1,0 +1,28 @@
+:host {
+  > mat-sidenav-container {
+    @apply h-full;
+
+    > mat-sidenav {
+      @apply w-40;
+    }
+
+    > mat-sidenav-content {
+      @apply flex flex-col h-screen;
+
+      > mat-toolbar {
+        @apply sticky top-0;
+        z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+
+        > mat-toolbar-row {
+          > a.nav-brand {
+            @apply mr-auto;
+          }
+        }
+      }
+
+      main {
+        @apply flex-grow;
+      }
+    }
+  }
+}

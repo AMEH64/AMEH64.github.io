@@ -1,0 +1,35 @@
+<div class="flex flex-1 flex-row justify-center items-center p-2">
+  <a
+    mat-icon-button
+    *ngFor="let socialIconLink of socialIconLinks"
+    class="p-4"
+    href="{{ socialIconLink.href }}"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <fa-icon
+      [icon]="[socialIconLink.fontSet, socialIconLink.fontIcon]"
+    ></fa-icon>
+  </a>
+</div>
+<div class="flex flex-1 flex-col md:flex-row p-2">
+  <div class="flex flex-1 flex-row justify-evenly p-2">
+    <p>
+      Made with
+      <fa-icon
+        [icon]="['fas', 'heart']"
+        class="text-red-700 animate-pulse"
+      ></fa-icon>
+      by Allen Hansen
+    </p>
+  </div>
+  <div class="flex flex-1 flex-col justify-evenly items-center p-2">
+    <p>&copy; {{ copyrightYear }} ameh.io. All rights reserved.</p>
+    <p>
+      Code license under an
+      <a class="no-underline hover:underline" routerLink="license"
+        >MIT-style License</a
+      >
+    </p>
+  </div>
+</div>

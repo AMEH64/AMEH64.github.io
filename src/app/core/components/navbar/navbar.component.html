@@ -1,0 +1,80 @@
+<mat-sidenav-container>
+  <mat-sidenav #drawer fixedInViewport attr.role="dialog" mode="over">
+    <mat-toolbar>
+      <mat-toolbar-row
+        class="flex flex-row justify-around justify-items-center"
+      >
+        <a mat-button routerLink="">AMEH</a>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-nav-list class="flex flex-column justify-around justify-items-center">
+      <ameh-theme-toggle></ameh-theme-toggle>
+      <a
+        mat-list-item
+        class="flex flex-row justify-center"
+        *ngFor="let navLink of navLinks"
+        routerLink="navLink"
+      >
+        {{ navLink | titlecase }}
+      </a>
+      <a
+        mat-list-item
+        class="flex flex-row justify-center"
+        routerLink="/skills"
+      >
+        <p>Skills</p>
+      </a>
+      <a
+        mat-list-item
+        class="flex flex-row justify-center"
+        routerLink="/experience"
+      >
+        <p>Experience</p>
+      </a>
+      <a
+        mat-list-item
+        class="flex flex-row justify-center"
+        routerLink="/contact"
+      >
+        Contact
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="mat-elevation-z8 bg-transparent">
+      <mat-toolbar-row class="flex flex-row">
+        <a mat-button routerLink="" class="nav-brand">AMEH</a>
+        <ng-container *ngIf="(isHandset$ | async) === false; else btnToggle">
+          <ameh-theme-toggle></ameh-theme-toggle>
+          <a
+            mat-button
+            *ngFor="let navLink of navLinks"
+            routerLink="{{ navLink }}"
+          >
+            {{ navLink | titlecase }}
+          </a>
+        </ng-container>
+        <ng-template #btnToggle
+          ><button
+            type="button"
+            aria-label="Toggle sidenav"
+            mat-icon-button
+            (click)="drawer.toggle()"
+          >
+            <fa-icon
+              aria-label="Side nav toggle icon"
+              [icon]="['fas', 'bars']"
+            ></fa-icon></button
+        ></ng-template>
+
+        <!-- <ng-content select="[navbarOptionalContent]"></ng-content> -->
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <main>
+      <ng-content select="[mainContent]"></ng-content>
+    </main>
+    <footer>
+      <ng-content select="[footerContent]"></ng-content>
+    </footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

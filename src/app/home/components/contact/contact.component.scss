@@ -1,0 +1,16 @@
+:host {
+  @apply flex flex-col md:flex-row justify-center gap-4;
+
+  > div,
+  > form {
+    @apply flex p-4;
+  }
+
+  > div {
+    @apply flex-initial self-center;
+  }
+
+  > form {
+    @apply flex-col flex-1 rounded-xl transition-all duration-500 bg-secondary dark:bg-secondary shadow-2xl;
+  }
+}
