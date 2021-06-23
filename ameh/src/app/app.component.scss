@@ -1,3 +1,11 @@
-div[slot='ameh-nav-content'] {
-  margin-left: auto;
+:host {
+  padding-top: 64px;
+
+  ameh-navbar {
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    // right: 0;
+    // z-index: 2;
+  }
 }

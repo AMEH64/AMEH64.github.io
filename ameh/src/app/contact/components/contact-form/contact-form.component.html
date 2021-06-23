@@ -1,0 +1,114 @@
+<mat-card>
+  <mat-card-header> </mat-card-header>
+  <!-- <img mat-card-image src="assets/images/contact.svg" width="225rem" height="auto" /> -->
+  <mat-card-content>
+    <div fxFlex="1 1 auto" fxLayout="column" fxLayout.gt-sm="column" fxLayoutAlign="center center">
+      <div fxFlex="1 1 0%" fxLayout="row" fxLayoutAlign="space-around center">
+        <img src="assets/images/contact.svg" width="250rem" height="auto" />
+      </div>
+      <div fxFlex="1 1 0%" fxLayoutAlign="space-around center">
+        <form [formGroup]="contactForm">
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="name"
+              placeholder="Ex. Allen Hansen"
+              maxlength="250"
+              required
+            />
+            <mat-hint align="end">{{ contactForm.controls.name.value.length }} / 250</mat-hint>
+            <mat-error *ngIf="contactForm.controls.name.hasError('required')">
+              Name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <!-- <span matPrefix><mat-icon>alternate_email</mat-icon>&nbsp;</span> -->
+            <input
+              type="email"
+              matInput
+              formControlName="email"
+              placeholder="Ex. me@ameh.io"
+              required
+            />
+            <mat-error
+              *ngIf="
+                contactForm.controls.email.hasError('email') &&
+                !contactForm.controls.email.hasError('required')
+              "
+            >
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="contactForm.controls.email.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Pronouns</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="pronouns"
+              placeholder="Ex. they/them"
+              maxlength="50"
+              required
+            />
+            <mat-hint align="end">{{ contactForm.controls.pronouns.value.length }} / 50</mat-hint>
+            <mat-error *ngIf="contactForm.controls.pronouns.hasError('required')">
+              Pronouns are <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Subject</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="subject"
+              placeholder="Ex. Let's Connect..."
+              maxlength="50"
+              required
+            />
+            <mat-hint align="end">{{ contactForm.controls.subject.value.length }} / 50</mat-hint>
+            <mat-error *ngIf="contactForm.controls.subject.hasError('required')">
+              Subject is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Message</mat-label>
+            <textarea
+              matInput
+              formControlName="message"
+              placeholder="Ex. Hello..."
+              rows="3"
+              maxlength="500"
+              required
+            ></textarea>
+            <mat-hint align="end">{{ contactForm.controls.message.value.length }} / 500</mat-hint>
+            <mat-error *ngIf="contactForm.controls.message.hasError('required')">
+              Message is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </form>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-divider [inset]="true"></mat-divider>
+  <mat-card-actions>
+    <a
+      mat-raised-button
+      color="primary"
+      href="mailto:contact@ameh.io?subject={{
+        contactForm.controls.subject.value | encodeURIComponent
+      }}&body=Hello%2C%0A%0A{{
+        contactForm.controls.message.value | encodeURIComponent
+      }}%0A%0ASincerely%2C%0A%0A{{ contactForm.controls.name.value | encodeURIComponent }}%0A{{
+        contactForm.controls.email.value | encodeURIComponent
+      }}%0A{{ contactForm.controls.pronouns.value | encodeURIComponent }}"
+      [disabled]="contactForm.invalid"
+    >
+      Open in mail app&nbsp;<mat-icon>open_in_new</mat-icon>
+    </a>
+  </mat-card-actions>
+</mat-card>

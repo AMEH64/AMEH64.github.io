@@ -1,0 +1,53 @@
+<mat-sidenav-container>
+  <mat-sidenav #drawer fixedInViewport attr.role="dialog" mode="over">
+    <mat-toolbar>
+      <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-around center">
+        <a mat-button routerLink="">AMEH</a>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-nav-list fxLayout="column" fxLayoutAlign="space-around center">
+      <a
+        mat-list-item
+        fxLayout="row"
+        fxLayoutAlign="center"
+        *ngFor="let navLink of navLinks"
+        routerLink="navLink"
+      >
+        {{ navLink | titlecase }}
+      </a>
+      <a mat-list-item fxLayout="row" fxLayoutAlign="center" routerLink="/skills">
+        <p>Skills</p>
+      </a>
+      <a mat-list-item fxLayout="row" fxLayoutAlign="center" routerLink="/experience">
+        <p>Experience</p>
+      </a>
+      <a mat-list-item fxLayout="row" fxLayoutAlign="center" routerLink="/contact"> Contact </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="mat-elevation-z8">
+      <mat-toolbar-row fxLayout="row">
+        <a mat-button routerLink="" class="nav-brand">AMEH</a>
+        <ng-container *ngIf="(isHandset$ | async) === false; else btnToggle">
+          <a mat-button *ngFor="let navLink of navLinks" routerLink="{{ navLink }}">
+            {{ navLink | titlecase }}
+          </a>
+        </ng-container>
+        <ng-template #btnToggle
+          ><button
+            type="button"
+            aria-label="Toggle sidenav"
+            mat-icon-button
+            (click)="drawer.toggle()"
+          >
+            <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+          </button></ng-template
+        >
+
+        <!-- <ng-content select="[navbarOptionalContent]"></ng-content> -->
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <ng-content select="[mainContent]"></ng-content>
+    <ng-content select="[footerContent]"></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

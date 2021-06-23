@@ -4,17 +4,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ModuleImportGuard } from './guards/module-import.guard';
 import { SharedModule } from '@shared/shared.module';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
-  declarations: [
-  ],
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    SharedModule
-  ],
-  exports: [
-  ]
+  declarations: [NavbarComponent, FooterComponent],
+  imports: [CommonModule, HttpClientModule, SharedModule],
+  exports: [NavbarComponent, FooterComponent]
 })
 export class CoreModule extends ModuleImportGuard {
   public constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

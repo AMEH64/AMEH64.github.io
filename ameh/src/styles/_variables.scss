@@ -1,11 +1,30 @@
-@import '~@angular/material/theming';
+// Import material theming functions
+@import "~@angular/material/theming";
 
-$ameh-light-primary-palette: mat-palette($mat-indigo);//, $default: 200);
-$ameh-light-accent-palette: mat-palette($mat-teal, $default: 200);
+$ameh-typography-config: mat-typography-config(
+  $font-family: 'Roboto Mono, "Helvetica Neue", sans-serif'
+);
 
-$ameh-dark-primary-palette: mat-palette($mat-indigo, $default: 200);
-$ameh-dark-accent-palette: mat-palette($mat-teal, $default: 200);
+// Light
+// $ameh-light-primary: mat-palette($mat-indigo);
+// $ameh-light-accent: mat-palette($mat-teal, $default: 200);
+// $ameh-light-theme: mat-light-theme(
+//   (
+//     color: (
+//       primary: $ameh-light-primary,
+//       accent: $ameh-light-accent
+//     )
+//   )
+// );
 
-$ameh-light-primary: mat-color($ameh-light-primary-palette);
-$ameh-light-primary: mat-color($ameh-light-primary-palette);
-$warn: mat-color($ameh-light-primary-palette);
+// Dark
+$ameh-dark-primary: mat-palette($mat-indigo, $default: 200);
+$ameh-dark-accent: mat-palette($mat-teal, $default: 200);
+$ameh-dark-theme: mat-dark-theme(
+  (
+    color: (
+      primary: $ameh-dark-primary,
+      accent: $ameh-dark-accent
+    )
+  )
+);

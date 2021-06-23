@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'ameh-contact',
@@ -7,29 +7,7 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email
-  ]);
+  constructor() {}
 
-  nameFormControl = new FormControl('', [
-    Validators.required,
-    Validators.maxLength(250)
-  ]);
-
-  pronounsFormControl = new FormControl('', [
-    Validators.required,
-    Validators.maxLength(50)
-  ]);
-
-  messageFormControl = new FormControl('', [
-    Validators.required,
-    Validators.maxLength(500)
-  ])
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

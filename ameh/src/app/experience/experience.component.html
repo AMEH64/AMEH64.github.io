@@ -1,4 +1,8 @@
-<section>
+<!-- <section>
   <h2 class="mat-display-2 bg-clip-text text-transparent bg-gradient">Experience</h2>
-  <ameh-experience-card *ngFor="let experience of experiences$ | async" [experience]="experience"></ameh-experience-card>
-</section>
+  <ameh-experience-card
+    *ngFor="let experience of experiences$ | async"
+    [experience]="experience"
+  ></ameh-experience-card>
+</section> -->
+<ameh-timeline [experiences$]="experiences$"> </ameh-timeline>

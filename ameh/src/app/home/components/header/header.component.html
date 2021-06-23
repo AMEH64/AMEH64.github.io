@@ -1,0 +1,38 @@
+<div fxFlex="1 1 0%" fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="10rem">
+  <div
+    fxFlex="1 1 0%"
+    fxLayout="column"
+    fxLayoutAlign="center start"
+    fxLayoutAlign.gt-sm="center end"
+    [ngClass]="{ 'padding-2rem': true }"
+    [ngClass.gt-sm]="{ 'padding-2rem': false }"
+  >
+    <h2 class="headline" [@slideInRight]="slideInRight">Hi, I&apos;m</h2>
+    <h1 class="mat-display-1">Allen M. E Hansen</h1>
+    <h2 class="headline" [@slideInRight]="slideInRight">Full Stack Developer</h2>
+  </div>
+  <div
+    fxFlex="1 1 0%"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutAlign.gt-sm="center start"
+  >
+    <img
+      [@slideInRight]="slideInRight"
+      src="assets/images/in-the-office.svg"
+      width="275rem"
+      height="auto"
+      alt="ameh waiving"
+    />
+  </div>
+</div>
+<div
+  [@bounce]="bounce"
+  class="padding-2rem"
+  fxFlex="0 1 0%"
+  fxLayout="column"
+  fxLayoutAlign="center center"
+>
+  <p class="mat-small">Scroll!</p>
+  <mat-icon>arrow_downward</mat-icon>
+</div>

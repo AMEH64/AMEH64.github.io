@@ -42,13 +42,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 
-import { NavComponent } from './components/nav/nav.component';
+import { TeximateModule } from 'ngx-teximate';
+
 import { DecodeURIComponentPipe } from './pipes/decode-uri-component.pipe';
 import { EncodeURIComponentPipe } from './pipes/encode-uri-component.pipe';
 
 @NgModule({
   declarations: [
-    NavComponent,
     DecodeURIComponentPipe,
     EncodeURIComponentPipe
   ],
@@ -58,6 +58,7 @@ import { EncodeURIComponentPipe } from './pipes/encode-uri-component.pipe';
     ReactiveFormsModule,
     LayoutModule,
     FlexLayoutModule,
+    TeximateModule,
     DragDropModule,
     MatAutocompleteModule,
     MatBadgeModule,
@@ -102,6 +103,7 @@ import { EncodeURIComponentPipe } from './pipes/encode-uri-component.pipe';
     ReactiveFormsModule,
     LayoutModule,
     FlexLayoutModule,
+    TeximateModule,
     DragDropModule,
     MatAutocompleteModule,
     MatBadgeModule,
@@ -138,7 +140,7 @@ import { EncodeURIComponentPipe } from './pipes/encode-uri-component.pipe';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-    NavComponent,
+    RouterModule,
     DecodeURIComponentPipe,
     EncodeURIComponentPipe
   ]

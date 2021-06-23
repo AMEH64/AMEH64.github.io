@@ -1,0 +1,22 @@
+:host {
+  > mat-card {
+    padding: 1.5rem;
+    max-width: 750px;
+
+    mat-card-content {
+      mat-form-field {
+        width: 100%;
+        margin: 1rem 0rem;
+      }
+    }
+
+    mat-divider {
+      padding-bottom: 1rem;
+    }
+
+    mat-card-actions {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}

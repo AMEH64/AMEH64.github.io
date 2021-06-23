@@ -1,27 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-@import 'styles/variables';
-@import 'styles/themes';
-@import 'styles/icons';
-
-// typography
-.bg-clip-text {
-  background-clip: text;
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto Mono, "Helvetica Neue", sans-serif;
 }
 
-.text-transparent {
-  color: transparent;
-}
-
-.bg-gradient {
-  background-image: linear-gradient(to right, mat-color($ameh-light-accent), mat-color($ameh-light-primary) 45%);
-}
-
-.dark-theme {
-  .bg-gradient {
-    background-image: linear-gradient(to right, mat-color($ameh-dark-accent, darker), mat-color($ameh-dark-primary, darker) 45%);
-  }
-}
+@import "styles/variables";
+@import "styles/themes";
+@import "styles/icons";

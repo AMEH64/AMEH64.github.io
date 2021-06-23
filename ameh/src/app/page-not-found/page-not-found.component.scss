@@ -1,7 +1,9 @@
-section {
-  height: calc(100vh - 64px);
-}
+:host {
+  section {
+    height: calc(100vh - 64px);
+  }
 
-section > div > div:first-of-type {
-  padding: 5rem;
+  section > div > div:first-of-type {
+    padding: 5rem;
+  }
 }

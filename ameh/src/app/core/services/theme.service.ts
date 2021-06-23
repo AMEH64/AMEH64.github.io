@@ -20,7 +20,9 @@ export class ThemeService {
 
   public theme$: Observable<string> = this._theme.asObservable();
 
-  constructor(private storage: StorageMap, private overlayContainer: OverlayContainer) { }
+  constructor(private storage: StorageMap, private overlayContainer: OverlayContainer) {
+    this.getTheme();
+  }
 
   private get themeDefault(): ThemePreference {
     return 'dark';
@@ -59,6 +61,7 @@ export class ThemeService {
       const themePreference: ThemePreference = response as ThemePreference;
       const theme = this.getThemeFromThemePreference(themePreference);
       this._theme.next(theme);
+      window.document.body.classList.toggle(`${this._themes.dark}-theme`, theme === this._themes.dark);
       this.overlayContainer.getContainerElement()
         .classList
         .toggle(`${this._themes.dark}-theme`, theme === this._themes.dark);

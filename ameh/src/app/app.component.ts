@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
+import * as AOS from 'aos';
 
 import { ThemeService } from '@core/services';
 
@@ -9,7 +10,7 @@ import { ThemeService } from '@core/services';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  public title = 'ameh';
+  public title: string = 'AMEH';
 
   public theme$: Observable<string>;
 
@@ -19,5 +20,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+      AOS.init();
   }
 }

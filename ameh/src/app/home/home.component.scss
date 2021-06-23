@@ -1,11 +1,28 @@
-:host {
-  section {
-    height: calc(100vh - 64px);
+@import "variables";
 
-    div {
-      div:last-of-type {
-        padding: 3rem;
-      }
+:host {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+
+  // padding-left: 6rem;
+  // padding-right: 6rem;
+
+  section {
+    padding: 3rem;
+
+    .mat-display-2 {
+      margin-bottom: 1rem;
+    }
+  }
+
+  ameh-contact-form {
+    margin: 6rem;
+  }
+
+  section {
+    .skills {
+      background-color: mat-color($ameh-dark-primary);
     }
   }
 }

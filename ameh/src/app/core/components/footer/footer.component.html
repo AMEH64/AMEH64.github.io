@@ -1,0 +1,19 @@
+<div fxFlex="1 1 0%" fxLayout="column">
+  <div class="content" fxFlex="1 1 auto" fxLayout="row" fxLayoutAlign="center center">
+    <a
+      mat-icon-button
+      *ngFor="let socialIconLink of socialIconLinks"
+      href="{{ socialIconLink.href }}"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <mat-icon
+        fontSet="{{ socialIconLink.fontSet }}"
+        fontIcon="{{ socialIconLink.fontIcon }}"
+      ></mat-icon>
+    </a>
+  </div>
+  <div class="content" fxFlex="1 1 auto" fxLayout="row" fxLayoutAlign="center center">
+    <p>&copy;&nbsp;ameh.io {{ copyrightYear }}</p>
+  </div>
+</div>

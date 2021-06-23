@@ -1,10 +1,8 @@
-<div [class.dark-theme]="(theme$ | async) === 'dark'">
-  <ameh-nav>
-    <div slot="ameh-nav-content">
-      <ameh-settings-dialog-btn></ameh-settings-dialog-btn>
-    </div>
-    <main slot="ameh-main-content">
-      <router-outlet></router-outlet>
-    </main>
-  </ameh-nav>
-</div>
+<ameh-navbar>
+  <main mainContent>
+    <router-outlet></router-outlet>
+  </main>
+  <footer footerContent>
+    <ameh-footer></ameh-footer>
+  </footer>
+</ameh-navbar>
