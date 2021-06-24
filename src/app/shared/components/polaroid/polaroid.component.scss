@@ -1,0 +1,30 @@
+:host {
+  @apply bg-white p-3 filter drop-shadow-2xl;
+
+  > img {
+    @apply max-w-full h-auto;
+  }
+
+  > .caption {
+    @apply pt-3 text-3xl text-center leading-8;
+    font-family: "Poor Story", cursive;
+  }
+}
+// TODO: finish sizes and caption font
+:host([size="sm"]) {
+  > img {
+    @apply h-72 w-auto;
+  }
+}
+
+:host([size="md"]) {
+  > img {
+    @apply h-80 w-auto;
+  }
+}
+
+:host([size="lg"]) {
+  > img {
+    @apply h-96 w-auto;
+  }
+}

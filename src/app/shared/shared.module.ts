@@ -1,21 +1,22 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { LayoutModule } from '@angular/cdk/layout';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { LayoutModule } from "@angular/cdk/layout";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatButtonModule } from "@angular/material/button";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatIconModule } from "@angular/material/icon";
+import { MatInputModule } from "@angular/material/input";
+import { MatListModule } from "@angular/material/list";
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
-import { EncodeUriComponentPipe } from './pipes';
+import { EncodeUriComponentPipe } from "./pipes";
+import { PolaroidComponent } from "./components/polaroid/polaroid.component";
 
 @NgModule({
-  declarations: [EncodeUriComponentPipe],
+  declarations: [EncodeUriComponentPipe, PolaroidComponent],
   imports: [
     CommonModule,
     LayoutModule,
@@ -42,6 +43,7 @@ import { EncodeUriComponentPipe } from './pipes';
     MatInputModule,
     FontAwesomeModule,
     EncodeUriComponentPipe,
+    PolaroidComponent,
   ],
 })
 export class SharedModule {}
