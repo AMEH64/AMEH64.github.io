@@ -1,9 +1,18 @@
-<div class="side-tile">
-  <h2>About</h2>
-  <p>
-    Allen is a UMN alum who is currently working, in the mortgage banking
-    industry, as a full stack web developer with a concentration in .NET. He
-    specializes in creating fast, secure, and scalable REST APIs and single page
-    applications (SPAs) with modern and interactive UIs.
-  </p>
+<div class="flex flex-1 justify-end">
+  <div class="side-tile">
+    <h2>Skills</h2>
+    <div class="flex flex-row flex-wrap gap-3">
+      <i
+        *ngFor="let icon of icons"
+        class="{{ icon }} scale-150"
+        aria-hidden="true"
+      ></i>
+    </div>
+  </div>
+</div>
+<div class="flex flex-grow justify-around items-center">
+  <ameh-polaroid
+    imgSrc="assets/images/Allen Hansen_r1_MSP_9174.jpg"
+    caption="Allen & Boba"
+  ></ameh-polaroid>
 </div>

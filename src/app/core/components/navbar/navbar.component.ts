@@ -1,22 +1,20 @@
-import { Component } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { Component, OnInit } from "@angular/core";
+import { fromEvent, Observable } from "rxjs";
+import { map, sampleTime, startWith } from "rxjs/operators";
 
 @Component({
-  selector: 'ameh-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
+  selector: "ameh-navbar",
+  templateUrl: "./navbar.component.html",
+  styleUrls: ["./navbar.component.scss"],
 })
-export class NavbarComponent {
-  public navLinks: string[] = ['about', 'experience', 'skills', 'contact'];
+export class NavbarComponent implements OnInit {
+  public isOnTop$: Observable<boolean> = fromEvent(window, "scroll").pipe(
+    startWith(true),
+    sampleTime(300),
+    map(() => window.scrollY === 0)
+  );
 
-  public isHandset$: Observable<boolean> = this.breakpointObserver
-    .observe(Breakpoints.Handset)
-    .pipe(
-      map((result) => result.matches),
-      shareReplay()
-    );
+  constructor() {}
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  ngOnInit(): void {}
 }

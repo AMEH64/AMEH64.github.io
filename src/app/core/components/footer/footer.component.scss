@@ -1,6 +1,3 @@
-@import "variables";
-
 :host {
-  // background-color: mat-color($ameh-dark-primary);
-  @apply container mx-auto relative bottom-0 flex flex-1 flex-col p-4 divide-y;
+  @apply bg-primary mx-auto relative bottom-0 flex flex-1 flex-col p-4 divide-y;
 }

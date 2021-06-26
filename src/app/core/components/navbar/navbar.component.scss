@@ -1,28 +1,23 @@
 :host {
-  > mat-sidenav-container {
-    @apply h-full;
+  @apply fixed z-50 w-full flex flex-row justify-around items-center;
 
-    > mat-sidenav {
-      @apply w-40;
+  > nav {
+    @apply flex flex-row flex-grow items-center p-3 shadow-lg transition-all duration-200 ease-in-out;
+
+    &:not(.on-top) {
+      @apply bg-primary;
     }
 
-    > mat-sidenav-content {
-      @apply flex flex-col h-screen;
+    &.on-top {
+      @apply bg-transparent shadow-none;
+    }
 
-      > mat-toolbar {
-        @apply sticky top-0;
-        z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+    > .left {
+      @apply flex flex-row;
+    }
 
-        > mat-toolbar-row {
-          > a.nav-brand {
-            @apply mr-auto;
-          }
-        }
-      }
-
-      main {
-        @apply flex-grow;
-      }
+    > .right {
+      @apply flex flex-grow justify-end items-center;
     }
   }
 }
