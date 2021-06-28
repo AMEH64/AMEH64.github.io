@@ -19,5 +19,9 @@
     > .right {
       @apply flex flex-grow justify-end items-center;
     }
+
+    a.brand {
+      font-family: "Permanent Marker", cursive;
+    }
   }
 }

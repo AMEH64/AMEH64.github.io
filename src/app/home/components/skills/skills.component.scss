@@ -3,25 +3,35 @@
 :host {
   @apply h-screen bg-primary flex flex-1 flex-col md:flex-row-reverse;
 
-  .side-tile {
-    @apply flex flex-col justify-center items-start
-      w-full sm:w-4/5
-      bg-white
-      sm:border border-secondary border-t-4 sm:border-l-4
-      p-6;
+  > .img-showcase {
+    @apply flex flex-grow justify-around items-center;
 
-    h2 {
-      @include mixins.display-5-responsive();
-    }
-
-    @screen sm {
-      h2 {
-        @include mixins.display-4-responsive();
-      }
+    > ameh-polaroid {
+      @apply transform -rotate-6 w-36 sm:w-48 lg:w-64 xl:w-80;
     }
   }
 
-  ameh-polaroid {
-    @apply transform -rotate-6 w-36 sm:w-48 lg:w-64;
+  > .content {
+    @apply flex flex-1 justify-end;
+
+    > .side-tile {
+      @apply flex flex-col justify-center items-center md:items-start
+        w-full md:w-4/5
+        bg-white
+        sm:border border-secondary border-t-4 sm:border-l-4
+        p-6;
+
+      > h1 {
+        @include mixins.display-3-responsive();
+      }
+
+      > .icons-wrapper {
+        @apply flex flex-row flex-wrap gap-8 md:gap-16 md:p-4 justify-center md:justify-start;
+
+        > i {
+          @apply transform scale-150 md:scale-300;
+        }
+      }
+    }
   }
 }

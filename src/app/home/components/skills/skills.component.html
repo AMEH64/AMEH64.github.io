@@ -1,18 +1,15 @@
-<div class="flex flex-1 justify-end">
+<div class="content">
   <div class="side-tile">
-    <h2>Skills</h2>
-    <div class="flex flex-row flex-wrap gap-3">
-      <i
-        *ngFor="let icon of icons"
-        class="{{ icon }} scale-150"
-        aria-hidden="true"
-      ></i>
+    <h1>Skills</h1>
+    <div class="icons-wrapper">
+      <i *ngFor="let icon of icons" class="{{ icon }}" aria-hidden="true"></i>
     </div>
   </div>
 </div>
-<div class="flex flex-grow justify-around items-center">
+<div class="img-showcase">
   <ameh-polaroid
     imgSrc="assets/images/Allen Hansen_r1_MSP_9174.jpg"
+    altText="Allen Hansen & his dog Boba posing for the camera."
     caption="Allen & Boba"
   ></ameh-polaroid>
 </div>

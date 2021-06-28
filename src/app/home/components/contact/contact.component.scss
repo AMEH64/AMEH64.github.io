@@ -1,16 +1,15 @@
+@use 'mixins';
+
 :host {
-  @apply flex flex-col md:flex-row justify-center gap-4;
+  @apply flex flex-col justify-center items-center p-6;
 
-  > div,
-  > form {
-    @apply flex p-4;
+  > h1 {
+    @include mixins.display-3-responsive();
   }
 
-  > div {
-    @apply flex-initial self-center;
-  }
-
-  > form {
-    @apply flex-col flex-1 rounded-xl transition-all duration-500 bg-secondary dark:bg-secondary shadow-2xl;
+  > button {
+    @apply bg-secondary text-white
+      transition-all transform hover:scale-105 hover:bg-white hover:text-secondary border hover:border-secondary
+      focus:scale-105 focus:outline-none focus:ring focus:ring-primary rounded-md px-4 py-2;
   }
 }

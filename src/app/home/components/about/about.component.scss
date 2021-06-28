@@ -3,25 +3,31 @@
 :host {
   @apply h-screen bg-secondary flex flex-1 flex-col md:flex-row;
 
-  .side-tile {
-    @apply flex flex-col justify-center items-start
-      w-full sm:w-4/5
+  > .img-showcase {
+    @apply flex flex-grow justify-around items-center;
+
+    > ameh-polaroid {
+      @apply transform rotate-6 w-36 sm:w-48 lg:w-64 xl:w-80;
+    }
+  }
+
+  > .content {
+    @apply flex flex-1 justify-start;
+
+    > .side-tile {
+      @apply flex flex-col justify-center items-center md:items-start
+      w-full md:w-4/5
       bg-white
       sm:border border-primary border-t-4 sm:border-r-4
       p-6;
 
-    h2 {
-      @include mixins.display-5-responsive();
-    }
+      > h1 {
+        @include mixins.display-3-responsive();
+      }
 
-    @screen sm {
-      h2 {
-        @include mixins.display-4-responsive();
+      > p {
+        @apply text-center md:text-left;
       }
     }
-  }
-
-  ameh-polaroid {
-    @apply transform rotate-6 w-36 sm:w-48 lg:w-64;
   }
 }

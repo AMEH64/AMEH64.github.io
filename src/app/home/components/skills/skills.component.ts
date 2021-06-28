@@ -21,7 +21,7 @@ export class SkillsComponent implements OnInit {
     "devicon-jquery-plain",
     "devicon-karma-plain",
     "devicon-nodejs-plain",
-    "devicon-npm-original",
+    "devicon-npm-original-wordmark",
     "devicon-sass-original",
     "devicon-microsoftsqlserver-plain",
     "devicon-tailwindcss-plain",

@@ -8,7 +8,9 @@ import { Component, Input, OnInit } from "@angular/core";
 export class PolaroidComponent implements OnInit {
   @Input() imgSrc!: string;
 
-  @Input() caption!: string | undefined;
+  @Input() altText!: string;
+
+  @Input() caption!: string;
 
   constructor() {}
 
