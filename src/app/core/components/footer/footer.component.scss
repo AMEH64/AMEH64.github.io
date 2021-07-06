@@ -1,3 +1,35 @@
 :host {
   @apply bg-primary mx-auto relative bottom-0 flex flex-1 flex-col p-4 divide-y;
+
+  > .social-icons-wrapper {
+    @apply flex flex-1 flex-row justify-center items-center p-2;
+
+    > a.social-icon-link {
+      @apply p-4;
+
+      .alt-text {
+        @apply hidden;
+      }
+    }
+  }
+
+  > .copyright-wrapper {
+    @apply flex flex-1 flex-col md:flex-row p-2;
+
+    > div:first-child {
+      @apply flex flex-1 flex-row justify-evenly p-2;
+
+      fa-icon {
+        @apply text-red-700 animate-pulse;
+      }
+    }
+
+    > div:last-child {
+      @apply flex flex-1 flex-col justify-center items-center p-2 text-center;
+
+      > a {
+        @apply no-underline hover:underline;
+      }
+    }
+  }
 }

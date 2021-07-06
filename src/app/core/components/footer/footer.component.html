@@ -1,8 +1,8 @@
-<div class="flex flex-1 flex-row justify-center items-center p-2">
+<div class="social-icons-wrapper">
   <a
     mat-icon-button
     *ngFor="let socialIconLink of socialIconLinks"
-    class="p-4"
+    class="social-icon-link"
     href="{{ socialIconLink.href }}"
     target="_blank"
     rel="noopener noreferrer"
@@ -10,29 +10,24 @@
     <fa-icon
       [icon]="[socialIconLink.fontSet, socialIconLink.fontIcon]"
     ></fa-icon>
-    <span class="hidden"
+    <span class="alt-text"
       >A link to Allen&apos;s profile on {{ socialIconLink.fontIcon }}.</span
     >
   </a>
 </div>
-<div class="flex flex-1 flex-col md:flex-row p-2">
-  <div class="flex flex-1 flex-row justify-evenly p-2">
+<div class="copyright-wrapper">
+  <div>
     <p>
       Made with
-      <fa-icon
-        [icon]="['fas', 'heart']"
-        class="text-red-700 animate-pulse"
-      ></fa-icon>
+      <fa-icon [icon]="['fas', 'heart']"></fa-icon>
       by Allen Hansen
     </p>
   </div>
-  <div class="flex flex-1 flex-col justify-evenly items-center p-2">
+  <div>
     <p>&copy; {{ copyrightYear }} ameh.io. All rights reserved.</p>
     <p>
       Code license under an
-      <a class="no-underline hover:underline" routerLink="license"
-        >MIT-style License</a
-      >
+      <a routerLink="license">MIT-style License</a>
     </p>
   </div>
 </div>

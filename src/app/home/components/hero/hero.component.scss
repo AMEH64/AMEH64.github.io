@@ -1,4 +1,49 @@
+@use 'mixins';
+
 :host {
-  background-image: url("../../../../assets/images/Allen Hansen_r2_MSP_9127_cropped.jpg");
-  @apply min-h-screen bg-primary flex flex-1 flex-col md:flex-col justify-start sm:justify-end items-center pt-16 sm:pt-0 bg-fixed bg-contain bg-no-repeat bg-bottom;
+  background-image: url("../../../../assets/images/ameh-hero.webp");
+  @apply min-h-screen 
+    flex flex-col justify-start items-center lg:justify-center lg:items-end
+    bg-primary bg-fixed bg-contain bg-no-repeat bg-bottom lg:bg-left-bottom
+    pt-20;
+
+  .content-wrapper {
+    @apply flex flex-col w-full md:w-1/2 justify-center items-center bg-transparent p-2;
+
+    > h2 {
+      @apply visible;
+
+      @include mixins.display-5-responsive();
+    }
+
+    > h1 {
+      @apply visible;
+
+      @include mixins.display-4-responsive();
+    }
+
+    > fa-icon {
+      @apply animate-bounce;
+    }
+
+    @screen md {
+      > h2 {
+        @include mixins.display-4-responsive();
+      }
+
+      > h1 {
+        @include mixins.display-3-responsive();
+      }
+    }
+
+    @screen lg {
+      > h2 {
+        @include mixins.display-3-responsive();
+      }
+
+      > h1 {
+        @include mixins.display-2-responsive();
+      }
+    }
+  }
 }

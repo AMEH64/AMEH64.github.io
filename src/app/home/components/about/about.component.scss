@@ -7,7 +7,7 @@
     @apply flex flex-grow justify-around items-center;
 
     > ameh-polaroid {
-      @apply transform rotate-6 w-36 sm:w-48 lg:w-64 xl:w-80;
+      @apply transform rotate-6 w-40 sm:w-48 md:w-48 lg:w-64 xl:w-80;
     }
   }
 
@@ -18,11 +18,11 @@
       @apply flex flex-col justify-center items-center md:items-start
       w-full md:w-4/5
       bg-white
-      sm:border border-primary border-t-4 sm:border-r-4
+      md:border-8 md:border-secondary
       p-6;
 
       > h1 {
-        @include mixins.display-3-responsive();
+        @include mixins.display-4-responsive();
       }
 
       > p {

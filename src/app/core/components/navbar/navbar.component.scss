@@ -14,14 +14,14 @@
 
     > .left {
       @apply flex flex-row;
+
+      a.brand {
+        font-family: "Permanent Marker", cursive;
+      }
     }
 
     > .right {
       @apply flex flex-grow justify-end items-center;
-    }
-
-    a.brand {
-      font-family: "Permanent Marker", cursive;
     }
   }
 }
