@@ -4,81 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0485e58c-36f2-4ead-85ae-736064ac24b5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.browserslistrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/extensions.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/tasks.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/karma.conf.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sitemap.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/android-chrome-192x192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/android-chrome-512x512.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app-routing.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/core/core.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/core/services/global-error-handler.service.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/core/services/global-error-handler.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/core/services/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/home/components/hero/hero.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/home/components/hero/hero.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/home/components/hero/hero.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/home/components/hero/hero.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/home/components/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/home/home-routing.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/home/home.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/home/home.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/home/home.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/home/home.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/home/home.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/error/error.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/error/error.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/error/error.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/error/error.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/page-not-found/page-not-found.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/page-not-found/page-not-found.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/page-not-found/page-not-found.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/page-not-found/page-not-found.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/models/app-settings.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/models/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/shared.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/apple-touch-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/Allen-Hansen-Resume.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/3d-exploding-head.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/3d-exploding-head.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/3d-thinking-face.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/3d-thinking-face.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/error.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/hero.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/page-not-found.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/environments/environment.prod.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/environments/environment.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/favicon-16x16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/favicon-32x32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/polyfills.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/staticwebapp.config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.app.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.spec.json" beforeDir="false" />
+    <list default="true" id="0485e58c-36f2-4ead-85ae-736064ac24b5" name="Changes" comment="Delete and create new app with next 14">
+      <change afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/theme-provider.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/theme-selector.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/app/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,11 +102,29 @@
       <workItem from="1692761412190" duration="1824000" />
       <workItem from="1692832583176" duration="611000" />
       <workItem from="1692994616196" duration="6000" />
-      <workItem from="1699025341230" duration="2097000" />
+      <workItem from="1699025341230" duration="3845000" />
     </task>
+    <task id="LOCAL-00001" summary="Delete and create new app with next 14">
+      <option name="closed" value="true" />
+      <created>1699027735344</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1699027735344</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/tailwind.config.js" />
+      </list>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Delete and create new app with next 14" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete and create new app with next 14" />
   </component>
 </project>
