@@ -4,10 +4,10 @@ import {
   Description as HeadlessDescription,
   Dialog as HeadlessDialog,
   DialogPanel as HeadlessDialogPanel,
-  type DialogProps as HeadlessDialogProps,
   DialogTitle as HeadlessDialogTitle,
   Transition as HeadlessTransition,
   TransitionChild as HeadlessTransitionChild,
+  type DialogProps as HeadlessDialogProps,
 } from "@headlessui/react";
 import clsx from "clsx";
 import type React from "react";
@@ -26,10 +26,10 @@ const sizes = {
   "5xl": "sm:max-w-5xl",
 };
 
-export function Alert({
+export function Dialog({
   open,
   onClose,
-  size = "md",
+  size = "lg",
   className,
   children,
   ...props
@@ -49,32 +49,32 @@ export function Alert({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 flex w-screen justify-center overflow-y-auto bg-zinc-950/15 px-2 py-2 focus:outline-0 sm:px-6 sm:py-8 lg:px-8 lg:py-16 dark:bg-zinc-950/50" />
+          <div className="fixed inset-0 flex w-screen justify-center overflow-y-auto bg-zinc-950/25 px-2 py-2 focus:outline-0 sm:px-6 sm:py-8 lg:px-8 lg:py-16 dark:bg-zinc-950/50" />
         </HeadlessTransitionChild>
 
         <HeadlessTransitionChild
           className="fixed inset-0 overflow-y-auto pt-6 sm:pt-0"
           enter="ease-out duration-100"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
+          enterFrom="opacity-0 translate-y-12 sm:translate-y-0"
+          enterTo="opacity-100 translate-y-0"
           leave="ease-in duration-100"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
+          leaveFrom="opacity-100 translate-y-0"
+          leaveTo="opacity-0 translate-y-12 sm:translate-y-0"
         >
-          <div className="grid min-h-full grid-rows-[1fr_auto_1fr] justify-items-center p-8 sm:grid-rows-[1fr_auto_3fr] sm:p-4">
+          <div className="grid min-h-full grid-rows-[1fr_auto] justify-items-center sm:grid-rows-[1fr_auto_3fr] sm:p-4">
             <HeadlessTransitionChild
               as={HeadlessDialogPanel}
               className={clsx(
                 className,
                 sizes[size],
-                "row-start-2 w-full rounded-2xl bg-white p-8 shadow-lg ring-1 ring-zinc-950/10 sm:rounded-2xl sm:p-6 dark:bg-zinc-900 dark:ring-white/10 forced-colors:outline",
+                "row-start-2 w-full min-w-0 rounded-t-3xl bg-white p-[--gutter] shadow-lg ring-1 ring-zinc-950/10 [--gutter:theme(spacing.8)] sm:mb-auto sm:rounded-2xl dark:bg-zinc-900 dark:ring-white/10 forced-colors:outline",
               )}
               enter="ease-out duration-100"
-              enterFrom="scale-95"
-              enterTo="scale-100"
+              enterFrom="sm:scale-95"
+              enterTo="sm:scale-100"
               leave="ease-in duration-100"
-              leaveFrom="scale-100"
-              leaveTo="scale-100"
+              leaveFrom="sm:scale-100"
+              leaveTo="sm:scale-100"
             >
               {children}
             </HeadlessTransitionChild>
@@ -85,7 +85,7 @@ export function Alert({
   );
 }
 
-export function AlertTitle({
+export function DialogTitle({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
@@ -94,13 +94,13 @@ export function AlertTitle({
       {...props}
       className={clsx(
         className,
-        "text-balance text-center text-base/6 font-semibold text-zinc-950 sm:text-wrap sm:text-left sm:text-sm/6 dark:text-white",
+        "text-balance text-lg/6 font-semibold text-zinc-950 sm:text-base/6 dark:text-white",
       )}
     />
   );
 }
 
-export function AlertDescription({
+export function DialogDescription({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
@@ -108,19 +108,19 @@ export function AlertDescription({
     <HeadlessDescription
       as={Text}
       {...props}
-      className={clsx(className, "mt-2 text-pretty text-center sm:text-left")}
+      className={clsx(className, "mt-2 text-pretty")}
     />
   );
 }
 
-export function AlertBody({
+export function DialogBody({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
-  return <div {...props} className={clsx(className, "mt-4")} />;
+  return <div {...props} className={clsx(className, "mt-6")} />;
 }
 
-export function AlertActions({
+export function DialogActions({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
@@ -129,7 +129,7 @@ export function AlertActions({
       {...props}
       className={clsx(
         className,
-        "mt-6 flex flex-col-reverse items-center justify-end gap-3 *:w-full sm:mt-4 sm:flex-row sm:*:w-auto",
+        "mt-8 flex flex-col-reverse items-center justify-end gap-3 *:w-full sm:flex-row sm:*:w-auto",
       )}
     />
   );
