@@ -14,7 +14,7 @@ export async function GET(req: Request) {
     email: 'spencer@planetaria.tech',
   }
 
-  let feed = new Feed({
+  const feed = new Feed({
     title: author.name,
     description: 'Your blog description',
     author,
@@ -28,7 +28,7 @@ export async function GET(req: Request) {
     },
   })
 
-  let articleIds = require
+  const articleIds = require
     .context('../articles', true, /\/page\.mdx$/)
     .keys()
     .filter((key) => key.startsWith('./'))

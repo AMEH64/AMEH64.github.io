@@ -41,8 +41,8 @@ function ThemeWatcher() {
 export const AppContext = createContext<{ previousPathname?: string }>({})
 
 export function Providers({ children }: { children: React.ReactNode }) {
-  let pathname = usePathname()
-  let previousPathname = usePrevious(pathname)
+  const pathname = usePathname()
+  const previousPathname = usePrevious(pathname)
 
   return (
     <AppContext.Provider value={{ previousPathname }}>

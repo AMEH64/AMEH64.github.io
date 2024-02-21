@@ -11,10 +11,9 @@ import {
   LinkedInIcon,
   XIcon,
 } from '@/components/SocialIcons'
-import logoAirbnb from '@/images/logos/airbnb.svg'
-import logoFacebook from '@/images/logos/facebook.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
-import logoStarbucks from '@/images/logos/starbucks.svg'
+import logoKincentric from '@/images/logos/kincentric.svg'
+import mcLogoJpg from '@/images/logos/mortgage-cadence.jpeg'
+import wtwLogo from '@/images/logos/wtw.jpeg'
 import image1 from '@/images/photos/image-1.jpg'
 import image2 from '@/images/photos/image-2.jpg'
 import image3 from '@/images/photos/image-3.jpg'
@@ -148,18 +147,23 @@ interface Role {
 }
 
 function Role({ role }: { role: Role }) {
-  let startLabel =
+  const startLabel =
     typeof role.start === 'string' ? role.start : role.start.label
-  let startDate =
+  const startDate =
     typeof role.start === 'string' ? role.start : role.start.dateTime
 
-  let endLabel = typeof role.end === 'string' ? role.end : role.end.label
-  let endDate = typeof role.end === 'string' ? role.end : role.end.dateTime
+  const endLabel = typeof role.end === 'string' ? role.end : role.end.label
+  const endDate = typeof role.end === 'string' ? role.end : role.end.dateTime
 
   return (
     <li className="flex gap-4">
       <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-        <Image src={role.logo} alt="" className="h-7 w-7" unoptimized />
+        <Image
+          src={role.logo}
+          alt={`${role.company} logo`}
+          className="fit-content h-7 w-7 rounded-full"
+          unoptimized
+        />
       </div>
       <dl className="flex flex-auto flex-wrap gap-x-2">
         <dt className="sr-only">Company</dt>
@@ -185,39 +189,39 @@ function Role({ role }: { role: Role }) {
 }
 
 function Resume() {
-  let resume: Array<Role> = [
+  const resume = [
     {
-      company: 'Planetaria',
-      title: 'CEO',
-      logo: logoPlanetaria,
-      start: '2019',
+      company: 'Kincentric, a Spencer Stuart Company',
+      title: 'Senior Software Developer',
+      logo: logoKincentric,
+      start: '2022',
       end: {
         label: 'Present',
         dateTime: new Date().getFullYear().toString(),
       },
     },
     {
-      company: 'Airbnb',
-      title: 'Product Designer',
-      logo: logoAirbnb,
-      start: '2014',
-      end: '2019',
+      company: 'Mortgage Cadence, an Accenture Company',
+      title: 'Software Developer',
+      logo: mcLogoJpg,
+      start: '2020',
+      end: '2022',
     },
     {
-      company: 'Facebook',
-      title: 'iOS Software Engineer',
-      logo: logoFacebook,
-      start: '2011',
-      end: '2014',
+      company: 'Willis Towers Watson (WTW)',
+      title: 'Software Developer Technical Lead',
+      logo: wtwLogo,
+      start: '2018',
+      end: '2020',
     },
     {
-      company: 'Starbucks',
-      title: 'Shift Supervisor',
-      logo: logoStarbucks,
-      start: '2008',
-      end: '2011',
+      company: 'Willis Towers Watson (WTW)',
+      title: 'Software Developer',
+      logo: wtwLogo,
+      start: '2018',
+      end: '2020',
     },
-  ]
+  ] satisfies Role[]
 
   return (
     <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
@@ -230,16 +234,22 @@ function Resume() {
           <Role key={roleIndex} role={role} />
         ))}
       </ol>
-      <Button href="#" variant="secondary" className="group mt-6 w-full">
-        Download CV
-        <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
-      </Button>
+      {/*<Button href="#" variant="secondary" className="group mt-6 w-full">*/}
+      {/*  Download CV*/}
+      {/*  <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />*/}
+      {/*</Button>*/}
     </div>
   )
 }
 
 function Photos() {
-  let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
+  const rotations = [
+    'rotate-2',
+    '-rotate-2',
+    'rotate-2',
+    'rotate-2',
+    '-rotate-2',
+  ]
 
   return (
     <div className="mt-16 sm:mt-20">
@@ -266,7 +276,7 @@ function Photos() {
 }
 
 export default async function Home() {
-  let articles = (await getAllArticles()).slice(0, 4)
+  const articles = (await getAllArticles()).slice(0, 4)
 
   return (
     <>
@@ -282,26 +292,38 @@ export default async function Home() {
             own terms.
           </p>
           <div className="mt-6 flex gap-6">
-            <SocialLink href="#" aria-label="Follow on X" icon={XIcon} />
             <SocialLink
-              href="#"
+              href="https://twitter.com/ameh64"
+              target="_blank"
+              rel="norefer noopener"
+              aria-label="Follow on X"
+              icon={XIcon}
+            />
+            <SocialLink
+              href="https://instagram.com/ameh64"
+              target="_blank"
+              rel="norefer noopener"
               aria-label="Follow on Instagram"
               icon={InstagramIcon}
             />
             <SocialLink
-              href="#"
+              href="https://github.com/ameh64"
+              target="_blank"
+              rel="norefer noopener"
               aria-label="Follow on GitHub"
               icon={GitHubIcon}
             />
             <SocialLink
-              href="#"
+              href="https://www.linkedin.com/in/allen-hansen"
+              target="_blank"
+              rel="norefer noopener"
               aria-label="Follow on LinkedIn"
               icon={LinkedInIcon}
             />
           </div>
         </div>
       </Container>
-      <Photos />
+      {/*<Photos />*/}
       <Container className="mt-24 md:mt-28">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">
@@ -310,7 +332,7 @@ export default async function Home() {
             ))}
           </div>
           <div className="space-y-10 lg:pl-16 xl:pl-24">
-            <Newsletter />
+            {/*<Newsletter />*/}
             <Resume />
           </div>
         </div>
