@@ -1,22 +1,27 @@
-import Image, { type ImageProps } from "next/image";
-import Link from "next/link";
-import clsx from "clsx";
+import Image, { type ImageProps } from 'next/image'
+import Link from 'next/link'
+import clsx from 'clsx'
 
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/Card";
-import { Container } from "@/components/Container";
-import { GitHubIcon, InstagramIcon, LinkedInIcon, TwitterIcon } from "@/components/ui/icons/SocialIcons";
-import logoAirbnb from "@/images/logos/airbnb.svg";
-import logoFacebook from "@/images/logos/facebook.svg";
-import logoPlanetaria from "@/images/logos/planetaria.svg";
-import logoStarbucks from "@/images/logos/starbucks.svg";
-import image1 from "@/images/photos/image-1.jpg";
-import image2 from "@/images/photos/image-2.jpg";
-import image3 from "@/images/photos/image-3.jpg";
-import image4 from "@/images/photos/image-4.jpg";
-import image5 from "@/images/photos/image-5.jpg";
-import { type ArticleWithSlug, getAllArticles } from "@/lib/articles";
-import { formatDate } from "@/lib/formatDate";
+import { Button } from '@/components/Button'
+import { Card } from '@/components/Card'
+import { Container } from '@/components/Container'
+import {
+  GitHubIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  XIcon,
+} from '@/components/SocialIcons'
+import logoAirbnb from '@/images/logos/airbnb.svg'
+import logoFacebook from '@/images/logos/facebook.svg'
+import logoPlanetaria from '@/images/logos/planetaria.svg'
+import logoStarbucks from '@/images/logos/starbucks.svg'
+import image1 from '@/images/photos/image-1.jpg'
+import image2 from '@/images/photos/image-2.jpg'
+import image3 from '@/images/photos/image-3.jpg'
+import image4 from '@/images/photos/image-4.jpg'
+import image5 from '@/images/photos/image-5.jpg'
+import { type ArticleWithSlug, getAllArticles } from '@/lib/articles'
+import { formatDate } from '@/lib/formatDate'
 
 function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -182,35 +187,35 @@ function Role({ role }: { role: Role }) {
 function Resume() {
   let resume: Array<Role> = [
     {
-      company: 'Kincentric, a Spencer Stuart Company',
-      title: 'Senior Software Developer',
+      company: 'Planetaria',
+      title: 'CEO',
       logo: logoPlanetaria,
-      start: '2022',
+      start: '2019',
       end: {
         label: 'Present',
         dateTime: new Date().getFullYear().toString(),
       },
     },
     {
-      company: 'Mortgage Cadence, an Accenture Company',
-      title: 'Software Developer',
+      company: 'Airbnb',
+      title: 'Product Designer',
       logo: logoAirbnb,
-      start: '2022',
-      end: '2020',
+      start: '2014',
+      end: '2019',
     },
     {
-      company: 'Willis Towers Watson (WTW)',
-      title: 'Software Developer Technical Lead',
+      company: 'Facebook',
+      title: 'iOS Software Engineer',
       logo: logoFacebook,
-      start: '2020',
-      end: '2018',
+      start: '2011',
+      end: '2014',
     },
     {
-      company: 'Willis Towers Watson (WTW)',
-      title: 'Software Developer',
+      company: 'Starbucks',
+      title: 'Shift Supervisor',
       logo: logoStarbucks,
-      start: '2017',
-      end: '2018',
+      start: '2008',
+      end: '2011',
     },
   ]
 
@@ -225,7 +230,7 @@ function Resume() {
           <Role key={roleIndex} role={role} />
         ))}
       </ol>
-      <Button href="#" className="group mt-6 w-full">
+      <Button href="#" variant="secondary" className="group mt-6 w-full">
         Download CV
         <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
       </Button>
@@ -277,23 +282,19 @@ export default async function Home() {
             own terms.
           </p>
           <div className="mt-6 flex gap-6">
+            <SocialLink href="#" aria-label="Follow on X" icon={XIcon} />
             <SocialLink
-              href="https://twitter.com"
-              aria-label="Follow on Twitter"
-              icon={TwitterIcon}
-            />
-            <SocialLink
-              href="https://instagram.com"
+              href="#"
               aria-label="Follow on Instagram"
               icon={InstagramIcon}
             />
             <SocialLink
-              href="https://github.com"
+              href="#"
               aria-label="Follow on GitHub"
               icon={GitHubIcon}
             />
             <SocialLink
-              href="https://linkedin.com"
+              href="#"
               aria-label="Follow on LinkedIn"
               icon={LinkedInIcon}
             />
