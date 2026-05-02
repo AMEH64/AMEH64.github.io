@@ -1,12 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap');
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
 @custom-variant dark (&:where([data-color-mode=dark], [data-color-mode=dark] *));
 
+@theme inline {
+  --font-sans: var(--font-geist);
+  --font-mono: var(--font-geist-mono);
+}
+
 @theme {
-  --font-sans: Geist, system-ui, sans-serif;
-  --font-mono: Geist Mono, ui-monospace, monospace;
 
   --color-primary-50: color-mix(
     in oklch,

@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config'
+import { defineConfig, fontProviders } from 'astro/config'
 import mdx from '@astrojs/mdx'
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
@@ -26,6 +26,24 @@ export default defineConfig({
       ],
     ],
   },
+  fonts: [
+    {
+      provider: fontProviders.google(),
+      name: 'Geist',
+      cssVariable: '--font-geist',
+      weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+      styles: ['normal'],
+      fallbacks: ['sans-serif'],
+    },
+    {
+      provider: fontProviders.google(),
+      name: 'Geist Mono',
+      cssVariable: '--font-geist-mono',
+      weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+      styles: ['normal'],
+      fallbacks: ['monospace'],
+    },
+  ],
   output: 'static',
   adapter: vercel({ webAnalytics: { enabled: true } }),
   vite: {
