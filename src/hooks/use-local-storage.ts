@@ -1,7 +1,7 @@
 import { useCallback, useSyncExternalStore } from 'react'
-import { z } from 'zod'
+import { z } from 'astro/zod'
 
-export const useLocalStorage = <TSchema extends z.ZodTypeAny>(
+export const useLocalStorage = <TSchema extends z.ZodType>(
   key: string,
   schema: TSchema,
   initialValue: z.infer<TSchema> | (() => z.infer<TSchema>),

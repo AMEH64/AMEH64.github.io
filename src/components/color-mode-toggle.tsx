@@ -1,13 +1,14 @@
-import { useLayoutEffect, type ComponentProps } from 'react'
+import { useLayoutEffect } from 'react'
 import { Button } from './button'
 import { SunIcon } from './icons/sun-icon'
 import { MoonIcon } from './icons/moon-icon'
-import { z } from 'zod'
+import { z } from 'astro/zod'
 import { useLocalStorage } from '~/hooks/use-local-storage'
 
 type ColorModeToggleProps = { className?: string }
 
 const ColorModeSchema = z.enum(['light', 'dark'])
+type ColorMode = z.infer<typeof ColorModeSchema>
 
 export const ColorModeToggle = ({ className }: ColorModeToggleProps) => {
   const [colorMode, setColorMode] = useLocalStorage(
@@ -15,8 +16,8 @@ export const ColorModeToggle = ({ className }: ColorModeToggleProps) => {
     ColorModeSchema,
     () =>
       matchMedia('(prefers-color-scheme: dark)').matches
-        ? ColorModeSchema.Values.dark
-        : ColorModeSchema.Values.light,
+        ? ('dark' as ColorMode)
+        : ('light' as ColorMode),
   )
 
   useLayoutEffect(() => {
@@ -29,16 +30,14 @@ export const ColorModeToggle = ({ className }: ColorModeToggleProps) => {
       .forEach(el =>
         el.setAttribute(
           'media',
-          colorMode === ColorModeSchema.Values.dark ? 'all' : 'none',
+          colorMode === 'dark' ? 'all' : 'none',
         ),
       )
   }, [colorMode])
 
   const handleColorModeToggleClick = () =>
     setColorMode(oldColorMode =>
-      oldColorMode === ColorModeSchema.Values.light
-        ? ColorModeSchema.Values.dark
-        : ColorModeSchema.Values.light,
+      oldColorMode === 'light' ? 'dark' : 'light',
     )
 
   return (
