@@ -47,13 +47,13 @@ export const ColorModeToggle = ({ className }: ColorModeToggleProps) => {
           light: (
             <>
               <MoonIcon />
-              <span className="sm:sr-only">Dark</span>
+              <span className="sr-only">Dark</span>
             </>
           ),
           dark: (
             <>
               <SunIcon />
-              <span className="sm:sr-only">Light</span>
+              <span className="sr-only">Light</span>
             </>
           ),
         }[colorMode]

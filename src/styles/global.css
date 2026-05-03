@@ -70,6 +70,11 @@
   :root {
     color-scheme: light dark;
 
+    --shadow-sm: 0 1px 2px oklch(0% 0 0 / 0.06);
+
+    --surface-border: oklch(0% 0 0 / 0.07);
+    --glass-bg: oklch(100% 0 0 / 0.78);
+
     @media (prefers-reduced-motion: no-preference) {
       scroll-behavior: smooth;
     }
@@ -81,14 +86,17 @@
 
   :root[data-color-mode='dark'] {
     color-scheme: dark;
+
+    --shadow-sm: 0 1px 3px oklch(0% 0 0 / 0.3);
+
+    --surface-border: oklch(100% 0 0 / 0.09);
+    --glass-bg: oklch(20% 0.01 240 / 0.8);
   }
 
   /*
     The default border color has changed to `currentColor` in Tailwind CSS v4,
     so we've added these compatibility styles to make sure everything still
     looks the same as it did with Tailwind CSS v3.
-    If we ever want to remove these styles, we need to add an explicit border
-    color utility to any element that depends on these defaults.
   */
   *,
   ::after,
@@ -97,4 +105,5 @@
   ::file-selector-button {
     border-color: var(--color-gray-200, currentColor);
   }
+
 }

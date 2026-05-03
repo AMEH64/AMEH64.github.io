@@ -1,117 +1,116 @@
 ---
-import { SITE_DESCRIPTION, SITE_TITLE } from '~/consts'
-import FullWidthLayout from '~/layouts/full-width-layout.astro'
-import { Button } from '~/components/button'
-import Header from '~/components/header.astro'
-import Footer from '~/components/footer.astro'
-import { Image } from 'astro:assets'
+import { SITE_DESCRIPTION, SITE_TITLE, FEATURES } from '~/consts'
+import MainLayout from '~/layouts/main-layout.astro'
+import ChevronRightIcon from '~/components/icons/chevron-right-icon.astro'
+import { getCollection } from 'astro:content'
+import { compareDesc } from 'date-fns/compareDesc'
+import { intlFormat } from 'date-fns/intlFormat'
 
-import portraitImage from '~/assets/images/allen-cover-portrait.webp'
-import landscapeImage from '~/assets/images/allen-cover-landscape.webp'
+const posts = (
+  await getCollection('blog', p => !p.data.draft || import.meta.env.DEV)
+).sort((a, b) => compareDesc(a.data.pubDate, b.data.pubDate))
+
+const recentPosts = posts.slice(0, 3)
 ---
 
-<FullWidthLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <Header />
-  <div class="bg-white dark:bg-zinc-900">
-    <div
-      class="relative isolate overflow-hidden bg-linear-to-b from-zinc-100/20 dark:from-zinc-950/10"
-    >
-      <div
-        class="mx-auto max-w-7xl pt-10 pb-24 sm:pb-32 lg:grid lg:grid-cols-2 lg:items-center lg:gap-x-8 lg:px-8 lg:py-40"
+<MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <div class="mx-auto flex w-full max-w-2xl flex-col py-12 sm:py-20">
+    <section>
+      <p
+        class="mb-4 text-xs font-semibold uppercase tracking-widest text-primary-600 dark:text-primary-400"
       >
-        <div class="px-6 lg:px-0 lg:pt-0">
-          <div class="mx-auto max-w-2xl">
-            <div class="max-w-lg">
-              <h1
-                class="mt-10 font-mono text-5xl font-semibold tracking-tight text-pretty text-zinc-900 italic sm:text-7xl dark:text-white"
-                aria-label="Allen Hansen"
-              >
-                <span
-                  aria-hidden="true"
-                  class="text-4xl text-zinc-400 sm:text-6xl dark:text-zinc-600"
-                  >&lt;</span
-                >AllenHansen<span
-                  aria-hidden="true"
-                  class="text-4xl text-zinc-400 sm:text-6xl dark:text-zinc-600"
-                  >&thinsp;/&gt;</span
-                >
-              </h1>
-              <p
-                class="mt-8 text-lg font-normal text-pretty text-zinc-500 sm:text-xl/8 dark:text-zinc-400"
-              >
-                I enjoy building software and solving problems through code.
+        Full stack developer
+      </p>
+      <h1
+        class="text-5xl font-bold tracking-tight text-zinc-900 sm:text-7xl dark:text-white"
+      >
+        Allen Hansen
+      </h1>
+      <p
+        class="mt-4 max-w-sm text-lg text-pretty text-zinc-500 sm:text-xl dark:text-zinc-400"
+      >
+        Writing about software, tooling, and the web.
+      </p>
+    </section>
+
+    <section aria-label="Site sections" class="mt-14 flex flex-col gap-10 sm:mt-20">
+      {
+        recentPosts.length > 0 && (
+          <div>
+            <div class="mb-3 flex items-baseline justify-between gap-4">
+              <p class="text-xs font-semibold uppercase tracking-widest text-primary-600 dark:text-primary-400">
+                Recent posts
               </p>
-              <div class="mt-10 flex items-center gap-x-6">
-                <Button variant="badge" as="a" href="/about">
-                  Learn more
-                </Button>
-                <a
-                  href="/blog"
-                  class="text-sm/6 font-semibold text-zinc-900 dark:text-white"
-                  >Read blog <span aria-hidden="true">→</span></a
-                >
-              </div>
+              <a
+                href="/blog"
+                class="flex items-center gap-0.5 text-xs text-zinc-400 transition-colors hover:text-primary-600 dark:text-zinc-500 dark:hover:text-primary-400"
+              >
+                All posts
+                <ChevronRightIcon class="size-3" />
+              </a>
+            </div>
+            <div class="divide-y divide-(--surface-border)">
+              {recentPosts.map(post => (
+                <article class="group py-6 first:pt-0">
+                  <a href={`/blog/${post.id}`} class="flex flex-col gap-2 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-500">
+                    <div class="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400">
+                      <span class="h-2.5 w-0.5 rounded-full bg-primary-500" />
+                      <time datetime={post.data.pubDate}>
+                        {intlFormat(post.data.pubDate, {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
+                        })}
+                      </time>
+                    </div>
+                    <h2 class="text-base font-semibold leading-snug text-zinc-900 transition-colors group-hover:text-primary-600 dark:text-zinc-100 dark:group-hover:text-primary-400">
+                      {post.data.title}
+                    </h2>
+                    {post.data.description && (
+                      <p class="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                        {post.data.description}
+                      </p>
+                    )}
+                  </a>
+                </article>
+              ))}
             </div>
           </div>
-        </div>
-        <div
-          class="mt-20 px-6 sm:mt-24 md:mx-auto md:max-w-2xl lg:mx-0 lg:mt-0 lg:w-screen lg:px-0"
-        >
-          <div
-            aria-hidden="true"
-            class="absolute inset-y-0 right-1/2 -z-10 -mr-10 w-[200%] skew-x-[-30deg] bg-white shadow-xl ring-1 shadow-zinc-600/10 ring-zinc-50 md:-mr-20 lg:-mr-36 dark:bg-zinc-800/30 dark:shadow-zinc-400/10 dark:ring-white/5"
-          >
-          </div>
-          <div class="mx-auto max-w-2xl md:mx-0 md:max-w-none">
-            <!-- Portrait image for very small devices and XL+ two-column -->
-            <!-- <Image
-              src={portraitImage}
-              alt="Allen Hansen"
-              width={1200}
-              height={1600}
-              class="aspect-3/4 object-cover sm:hidden xl:block xl:aspect-square xl:size-full xl:rounded-3xl"
-              loading="eager"
-              format="webp"
-            /> -->
-            <!-- Landscape image for small to large devices -->
-            <!-- <Image
-              src={landscapeImage}
-              alt="Allen Hansen"
-              width={1600}
-              height={900}
-              class="hidden aspect-video object-cover sm:block sm:rounded-3xl xl:hidden"
-              loading="eager"
-              format="webp"
-            /> -->
+        )
+      }
 
-            <!-- Portrait image for very small devices and XL+ two-column -->
-            <Image
-              src={portraitImage}
-              alt="Allen Hansen"
-              width={1200}
-              height={1600}
-              class="aspect-3/4 rounded-3xl object-cover sm:hidden xl:block xl:aspect-square xl:size-full"
-              loading="eager"
-              format="webp"
-            />
-            <!-- Landscape image for small to large devices -->
-            <Image
-              src={landscapeImage}
-              alt="Allen Hansen"
-              width={1600}
-              height={900}
-              class="hidden aspect-video rounded-3xl object-cover sm:block xl:hidden"
-              loading="eager"
-              format="webp"
-            />
-          </div>
+      {(FEATURES.now || FEATURES.about) && (
+        <div class="grid gap-4 sm:grid-cols-2">
+          {FEATURES.now && (
+            <a href="/now" class="group flex flex-col gap-2">
+              <p
+                class="text-xs font-semibold uppercase tracking-widest text-primary-600 dark:text-primary-400"
+              >
+                Now
+              </p>
+              <p
+                class="text-sm text-zinc-600 transition-colors group-hover:text-zinc-900 dark:text-zinc-400 dark:group-hover:text-zinc-100"
+              >
+                What I'm working on, learning, and thinking about right now.
+              </p>
+            </a>
+          )}
+          {FEATURES.about && (
+            <a href="/about" class="group flex flex-col gap-2">
+              <p
+                class="text-xs font-semibold uppercase tracking-widest text-primary-600 dark:text-primary-400"
+              >
+                About
+              </p>
+              <p
+                class="text-sm text-zinc-600 transition-colors group-hover:text-zinc-900 dark:text-zinc-400 dark:group-hover:text-zinc-100"
+              >
+                A bit about me, what I care about, and how to get in touch.
+              </p>
+            </a>
+          )}
         </div>
-      </div>
-      <div
-        class="absolute inset-x-0 bottom-0 -z-10 h-24 bg-linear-to-t from-white sm:h-32 dark:from-zinc-900"
-      >
-      </div>
-    </div>
+      )}
+    </section>
   </div>
-  <Footer />
-</FullWidthLayout>
+</MainLayout>
