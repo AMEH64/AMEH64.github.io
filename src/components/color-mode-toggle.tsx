@@ -28,17 +28,12 @@ export const ColorModeToggle = ({ className }: ColorModeToggleProps) => {
     document
       .querySelectorAll("picture > source[id^='mermaid-dark-']")
       .forEach(el =>
-        el.setAttribute(
-          'media',
-          colorMode === 'dark' ? 'all' : 'none',
-        ),
+        el.setAttribute('media', colorMode === 'dark' ? 'all' : 'none'),
       )
   }, [colorMode])
 
   const handleColorModeToggleClick = () =>
-    setColorMode(oldColorMode =>
-      oldColorMode === 'light' ? 'dark' : 'light',
-    )
+    setColorMode(oldColorMode => (oldColorMode === 'light' ? 'dark' : 'light'))
 
   return (
     <Button

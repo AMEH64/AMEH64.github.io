@@ -9,7 +9,6 @@
 }
 
 @theme {
-
   --color-primary-50: color-mix(
     in oklch,
     var(--color-slate-50) 80%,
