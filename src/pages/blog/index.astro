@@ -35,7 +35,7 @@ const posts = (
       {
         posts.map(post => (
           <article class="group py-8 first:pt-0">
-            <a href={`/blog/${post.id}`} class="flex flex-col gap-2 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-500">
+            <a href={`/blog/${post.id.replace(/\/index$/, '')}`} class="flex flex-col gap-2 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-500">
               <div class="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400">
                 <span class="h-3 w-0.5 rounded-full bg-primary-500" />
                 <time datetime={post.data.pubDate}>

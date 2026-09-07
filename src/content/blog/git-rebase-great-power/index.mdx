@@ -1,0 +1,95 @@
+---
+title: 'Git Rebase: With Great Power Comes Great Responsibility'
+description: 'Git rebase lets you rewrite history. That is exactly as dangerous as it sounds—and exactly as useful. Here is how to use it safely.'
+pubDate: '2026-08-21'
+image: './hero.png'
+draft: true
+---
+
+import Alert from '~/components/alert.astro'
+import { Image } from 'astro:assets'
+import uncleBenImg from './uncle-ben.jpg'
+
+If you practice trunk-based development, you live on short-lived branches off `main`. You cut a branch, build a small thing, and open a PR—ideally within a day or two. During that time `main` keeps moving, other PRs land, and before long your branch has drifted far enough behind that you need to catch it up. The tool for that job is `git rebase`, and it is worth understanding exactly what it does before you make it a habit.
+
+## Rebase vs. Merge
+
+When you merge `main` into your branch, Git records that two lines of history converged. Your commits stay exactly where they are, with their original SHAs, and a new merge commit appears on top to tie the threads together. The history is honest—it shows what actually happened.
+
+Rebase works differently. Instead of adding a merge commit, it takes each of your commits and replays them, one at a time, onto the tip of the target branch. The code ends up in the same place, but every rebased commit is a brand new object with a new SHA. Your branch is no longer a continuation of the old history; it is a fresh line of commits that starts from the new base.
+
+That distinction has a concrete consequence: after a rebase, your local branch tip and your remote branch tip have diverged. Git treats them as unrelated histories. A normal `git push` will be rejected because the remote is no longer an ancestor of what you are trying to push. To update the remote you have to tell Git to overwrite it, which is where force pushing enters the picture.
+
+<Image src={uncleBenImg} alt="Uncle Ben: With great power comes great responsibility" />
+
+Rebase hands you the ability to rewrite history—to produce a clean, linear log that reads like you planned everything from the start. The rest of this post is about the "responsibility" half of that equation, because the force push that follows a rebase is where things can go wrong quickly.
+
+## The Problem with git push --force
+
+Plain `git push --force` is a blunt instrument. It tells the remote to accept whatever you are pushing, full stop, no questions asked. Every safety check is disabled.
+
+The specific scenario to worry about is this: a teammate opens your branch to add a small fix, or your CI system pushes a commit to update something automatically. You are not aware of it because it happened after your last fetch. You rebase locally, force push, and Git dutifully overwrites the remote with your version. Your teammate's commit is gone. There is no warning, no error, no recovery prompt. It is just gone, unless they happen to have the SHA somewhere in their own reflog.
+
+This is not a hypothetical edge case. It is the kind of thing that happens on a Friday afternoon when everyone is moving fast, and it can take longer to diagnose than to undo.
+
+## --force-with-lease to the rescue... mostly
+
+`git push --force-with-lease` is the safer alternative that most people reach for, and it is genuinely useful. The way it works: before overwriting the remote, Git checks your remote-tracking ref—`origin/branch-name`—and compares it to the actual remote tip. If the remote has moved ahead of what your local tracking ref shows, the push is rejected. This catches the teammate overwrite scenario described above, because their commit would show up as a difference between what you last saw and what the remote currently has.
+
+That protection is real, but there is a gap that is easy to miss.
+
+Modern editors—including Cursor and VS Code—run background fetch operations automatically. Every few minutes, without any action from you, they quietly run `git fetch` to keep the UI current with the remote. That fetch updates your remote-tracking refs. So `origin/branch-name` now reflects your teammate's new commit, not because you reviewed it or pulled it, but because your editor fetched it in the background.
+
+When you run `git push --force-with-lease` after that background fetch, the lease check compares the remote to your tracking ref—and they match, because the fetch already synced them. The check passes. The push goes through. Your teammate's commit is overwritten, same as with plain `--force`, even though you thought the lease was protecting you. The protection you were counting on already passed without you knowing.
+
+## --force-if-includes closes the gap
+
+`--force-if-includes` adds a second layer of verification that specifically addresses this scenario. Instead of checking whether your remote-tracking ref matches the remote, it checks whether the remote tip is reachable from your local reflog.
+
+Here is why that matters: a background fetch updates your remote-tracking ref, but it does not add anything to your local branch's reflog. Your reflog only records things that actually happened to your local branch—commits you made, merges you ran, rebases you completed. A silent background fetch that updated `origin/branch-name` left no trace there.
+
+So when `--force-if-includes` checks whether the remote tip appears in your reflog, a background-fetch-updated tracking ref fails that check. Git refuses the push and tells you the remote has changes you have not integrated. You fetch, inspect what changed, rebase again if needed, and then push. The teammate's work is preserved.
+
+Used together, the two flags cover both cases:
+
+```bash
+git push --force-with-lease --force-if-includes
+```
+
+`--force-with-lease` catches remotes that moved ahead of your tracking ref. `--force-if-includes` catches remotes that moved ahead of your local history even when the tracking ref was silently updated. Neither flag alone is sufficient in an environment where your editor fetches automatically—which is most environments.
+
+## Making it the default
+
+This combination should honestly be on by default. It is not, but you can get close with two config entries:
+
+```bash
+git config --global push.useForceIfIncludes true
+git config --global alias.pushf 'push --force-with-lease --force-if-includes'
+```
+
+`push.useForceIfIncludes true` means that whenever you use `--force-with-lease`, Git automatically applies `--force-if-includes` as well. You do not have to remember to type both flags. The `pushf` alias gives you a short command to reach for instead of `-f`:
+
+```bash
+git pushf
+```
+
+<Alert variant="warning">
+  There is no Git config that makes plain `-f` imply `--force-with-lease`. If
+  you have years of muscle memory for `git push -f`, that reflex will bypass
+  every protection described in this post. The `pushf` alias is the practical
+  mitigation—but it only works if you actually use it. The real risk is not
+  knowing the flags exist; it is reaching for `-f` on autopilot when you are in
+  a hurry.
+</Alert>
+
+## Closing thoughts
+
+At this point you have the foundation: you know what rebase actually does to your commit graph, you know why a force push is unavoidable after one, and you know how to force push without silently destroying a teammate's work.
+
+The next challenge is what happens when you stack branches on top of each other and then the bottom of the stack gets squash-merged into `main`. Squash merges rewrite the shared history that your upper branches depend on, and a naive rebase of the top of the stack will replay commits that are already there, producing conflicts or duplicates. The fix is less obvious than you might expect. I cover it in [Part 2: Rebasing Stacked Branches After a Squash Merge](/blog/rebasing-stacked-branches).
+
+## References
+
+- [git-push documentation](https://git-scm.com/docs/git-push)
+- [git-rebase documentation](https://git-scm.com/docs/git-rebase)
+- [Trunk Based Development](https://trunkbaseddevelopment.com)

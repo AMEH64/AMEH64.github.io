@@ -9,7 +9,7 @@ export async function getStaticPaths() {
     p => !p.data.draft || import.meta.env.DEV,
   )
   return posts.map(post => ({
-    params: { slug: post.id },
+    params: { slug: post.id.replace(/\/index$/, '') },
     props: post,
   }))
 }
@@ -20,6 +20,6 @@ const post = Astro.props
 const { Content } = await render(post)
 ---
 
-<BlogPostLayout {...post.data} slug={post.id}>
+<BlogPostLayout {...post.data} slug={post.id.replace(/\/index$/, '')}>
   <Content components={{ a: Anchor }} />
 </BlogPostLayout>

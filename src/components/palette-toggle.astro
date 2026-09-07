@@ -1,0 +1,57 @@
+---
+interface Props {
+  backHref?: string
+  backLabel?: string
+}
+
+const { backHref = '/redesign', backLabel = '← variants' } = Astro.props
+---
+
+<div class="fixed bottom-6 right-6 z-50 flex items-center gap-2">
+  <a
+    href={backHref}
+    class="rounded-full border border-white/10 bg-zinc-900/80 px-3 py-1.5 text-xs text-zinc-400 backdrop-blur-sm transition-colors hover:text-zinc-100"
+  >
+    {backLabel}
+  </a>
+  <button
+    id="palette-toggle"
+    class="rounded-full border border-white/10 bg-zinc-900/80 px-3 py-1.5 text-xs text-zinc-400 backdrop-blur-sm transition-colors hover:text-zinc-100"
+    title="Toggle accent color between teal and emerald"
+  >
+    Palette: <span id="palette-label">Teal</span>
+  </button>
+</div>
+
+<script>
+  function initPaletteToggle() {
+    const btn = document.getElementById('palette-toggle')
+    const label = document.getElementById('palette-label')
+    // Guard: only initialize once per button element to prevent duplicate listeners
+    if (!btn || !label || btn.dataset.initialized) return
+    btn.dataset.initialized = 'true'
+
+    function updateLabel() {
+      if (!label) return
+      const current = document.documentElement.dataset.palette ?? 'teal'
+      label.textContent = current === 'emerald' ? 'Emerald' : 'Teal'
+    }
+
+    updateLabel()
+
+    btn.addEventListener('click', () => {
+      const current = document.documentElement.dataset.palette ?? 'teal'
+      const next = current === 'emerald' ? 'teal' : 'emerald'
+      if (next === 'emerald') {
+        document.documentElement.dataset.palette = 'emerald'
+      } else {
+        document.documentElement.removeAttribute('data-palette')
+      }
+      localStorage.setItem('palette', next)
+      updateLabel()
+    })
+  }
+
+  document.addEventListener('astro:page-load', initPaletteToggle)
+  initPaletteToggle()
+</script>
