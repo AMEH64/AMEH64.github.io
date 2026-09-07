@@ -8,13 +8,13 @@ draft: true
 
 import Alert from '~/components/alert.astro'
 
-Under trunk-based development, long-lived feature branches are friction. A PR with 600 changed lines is painful to review—your reviewer either rubber-stamps it or spends an afternoon on it. Three PRs of 200 lines each are manageable, can be reviewed in parallel, and can land independently without a pile of merge conflicts waiting at the end. Stacked branches are how you keep building while earlier work waits for review: each branch builds on the one before it, each gets its own PR, and you move forward without blocking on anyone.
+Large PRs are hard to review. There's a certain irony to it: send someone a 600-line PR and you'll get a rubber-stamp LGTM; send them 150 lines and suddenly there are comments on every function. With agentic coding, PRs are only getting bigger—some teams now use agents to review them, which feels like the logical conclusion of something. I'm not here to take a position on any of that. Being able to break work into smaller chunks is still worth doing, and stacked branches are the cleanest way I know how: each branch builds on the one before it, each gets its own PR, and you keep moving without blocking on anyone.
 
 The setup is straightforward. The catch shows up the moment someone merges one of your branches.
 
 ## What a Stack Looks Like
 
-Say you are working on a feature that touches the data model, the API layer, and the frontend. Instead of one massive branch, you build three:
+Say you have a chunk of work large enough to split up—one feature or a few related streams. You build a stack of branches, each one branching off the last:
 
 ```mermaid
 gitGraph
@@ -47,9 +47,11 @@ git rebase main
 
 Git replays `feat/a` onto the new `main` tip, then automatically force-updates `feat/b` and `feat/c` to point at the rebased commits. Without this config, you would rebase `feat/a`, switch to `feat/b`, rebase that, switch to `feat/c`, rebase that—three commands, three chances to get the branch names wrong.
 
+One thing worth knowing: if rebasing `feat/a` onto `main` produces conflicts, git pauses for you to resolve them before continuing. Once `feat/a`'s rebase completes, git moves `feat/b`—and if that produces conflicts, git pauses again. Each branch's conflicts surface and get resolved in order. It's still less work than rebasing each branch individually.
+
 ## The Squash Merge Problem
 
-Most teams use squash merge. When `feat/a`'s PR is approved and merged, GitHub or GitLab collapses all the commits in `feat/a` into one brand new commit on `main`. That new commit has a brand new SHA. Your local `feat/a` commits still exist with their original SHAs.
+If you prefer a linear history—and I do—you probably enforce squash merges on your PRs. When `feat/a`'s PR is approved and merged, GitHub or GitLab collapses all the commits in `feat/a` into one brand new commit on `main`. That new commit has a brand new SHA. Your local `feat/a` commits still exist with their original SHAs.
 
 As far as git is concerned, those two sets of commits are completely unrelated objects. They represent the same changes to the same files, but they have different hashes, different parents, different everything.
 
@@ -89,36 +91,9 @@ git rebase --onto main feat/b feat/c
 
 Each command names the branch that was just handled as the upstream, excluding those commits from the replay.
 
-## The Interactive Alternative (and Why It Hurts)
+## What I Was Doing Before
 
-Before `--onto`, the common answer was `git rebase -i main`. That drops you into a todo file listing every commit reachable from `feat/b` that is not on `main`—which includes all the `feat/a` commits you need to drop. You scroll through, find them, delete those lines, save, and let it run.
-
-With two or three commits in the merged branch it is tolerable. With eight commits across two merged branches, you are reading SHA prefixes and commit messages, trying not to accidentally delete the wrong line. `--onto` scales with your stack depth. `-i` does not.
-
-That said, interactive rebase is still the right tool for reshaping a single branch—squashing fixup commits, reordering things, rewriting messages. So it is worth knowing how to drive it when you land there.
-
-When git opens the interactive rebase todo list, it uses the editor resolved from `core.editor`, then `GIT_EDITOR`, then `VISUAL`, then `EDITOR`, falling back to `vi` if none of those are set. That last fallback is why so many people end up in vim without ever choosing it.
-
-The thing that trips people up is the mental model. Vim starts in normal mode, and the rebase todo list is a normal-mode job. You do not need insert mode to edit it.
-
-- `dd` deletes the line under the cursor. That is how you drop a commit from the todo.
-- `cw` changes the current word—how you change `pick` to `squash`, `fixup`, or `reword`. This is the one moment you land in insert mode; `Esc` gets you back out.
-- `:wq` saves the file and starts the rebase. `:q!` aborts it entirely. Both are typed from normal mode.
-- If you pressed `i` at some point, hit `Esc` before typing `:wq`, or those characters will land in the file instead of the command line.
-
-<Alert variant="info">
-Two configs worth adding if you are going to use interactive rebase at all:
-
-```bash
-# Stop git from silently dropping commits you accidentally deleted
-git config --global rebase.missingCommitsCheck error
-
-# Or redirect just the rebase todo list to a GUI editor while keeping vim for commit messages
-git config --global sequence.editor "cursor --wait"
-```
-
-`rebase.missingCommitsCheck error` makes git bail out rather than silently proceed if you accidentally deleted a commit line from the todo. It pairs directly with how easy `dd` makes it to remove a line you did not mean to. `sequence.editor` overrides the editor for the rebase todo specifically, leaving `core.editor` intact for commit messages. `code --wait` works just as well if VS Code is your editor.
-</Alert>
+The alternative people reach for is `git rebase -i main`. That drops you into an interactive todo file listing every commit reachable from `feat/b` that isn't on `main`—including all the `feat/a` commits you need to drop. So I'd scroll through, find each one, mark it `d` to drop it, save, and move on. With two commits it's fine. With eight commits across two merged branches you're squinting at SHA prefixes trying not to drop the wrong line. I've been doing this for longer than I'd like to admit. `--onto` is the flag I wish I'd known sooner.
 
 Squash merges and stacked branches work fine together—you just need the right tool. `git rebase --onto` gives you a precise, repeatable way to clean up the stack after each merge without the fragile manual work of `-i`.
 
